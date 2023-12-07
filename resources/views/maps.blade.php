@@ -43,7 +43,7 @@
 
     <div id="map" class="top-[20px]">
         {{-- <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
-
+    </div>
     
     {{-- Contach here! --}}
     <div class="bg-indigo-900 py-10">
