@@ -42,7 +42,7 @@
     {{-- Maps Here! --}}
 
     <div id="map" class="top-[20px]">
-        {{-- <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
+        {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
     </div>
     
     {{-- Contach here! --}}
