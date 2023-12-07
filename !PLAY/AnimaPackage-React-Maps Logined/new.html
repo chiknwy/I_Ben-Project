@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <header class="px-2 md:px-5 bg-gray-900 py-7 md:py-14 opacity-95 backdrop-blur-sm z-10 bg-indigo-900">
+        <nav class="container mx-auto flex flex-wrap items-center justify-between opacity-100">
+            <div class="w-full md:w-1/2 md:flex-shrink-0 relative">
+                <img class="w-1/2 md:w-full h-auto" src="{{URL('img/maps/iben-4-removebg-preview-5.png')}}" alt="Logo" />
+            </div>
+            <div class="flex-grow md:flex md:justify-start md:items-start gap-5">
+                <div class="text-indigo-700 text-lg font-medium font-Poppins">Home</div>
+                <div class="text-black text-lg font-medium font-Poppins">Maps</div>
+                <div class="text-indigo-700 text-lg font-medium font-Poppins">Contacts</div>
+            </div>
+            <div class="relative w-full md:w-1/2">
+                <input type="text" class="w-full md:w-3/4 h-12 md:h-16 bg-gray-200 rounded-xl pl-3 md:pl-10 pr-2 border border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Search...">
+                <div class="w-8 h-8 left-[10px] top-2 absolute bg-teal-300 rounded-xl md:hidden"></div>
+                <div class="w-4 h-4 left-[15px] top-5 absolute md:hidden"><img src="{{url('img/maps/search.svg')}}" alt=""></div>
+            </div>
+        </nav>
+    </header>
+    
+</body>
+</html>
