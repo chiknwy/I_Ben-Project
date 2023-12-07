@@ -1,0 +1,518 @@
+.maps-logined {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.maps-logined .overlap-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1882px;
+}
+
+.maps-logined .overlap {
+  position: relative;
+  width: 1742px;
+  height: 1882px;
+}
+
+.maps-logined .rectangle {
+  position: absolute;
+  width: 1440px;
+  height: 1882px;
+  top: 0;
+  left: 0;
+  background-color: #443e7e;
+}
+
+.maps-logined .frame {
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  position: absolute;
+  top: 1323px;
+  left: 245px;
+  background-color: #59c3c3;
+  border-radius: 8px;
+}
+
+.maps-logined .text-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  margin-left: -10.5px;
+  margin-right: -10.5px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #ebebeb;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .div {
+  position: absolute;
+  width: 878px;
+  top: 1035px;
+  left: 68px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 800;
+  color: #59c3c3;
+  font-size: 64px;
+  letter-spacing: 0;
+  line-height: 64px;
+}
+
+.maps-logined .image {
+  width: 1440px;
+  height: 843px;
+  top: 134px;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+}
+
+.maps-logined .frame-2 {
+  position: absolute;
+  width: 449px;
+  height: 64px;
+  top: 30px;
+  left: 656px;
+  background-color: #ebebeb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.maps-logined .text-wrapper-2 {
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 500;
+  color: #4062bb;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .overlap-group {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 8px;
+  left: 393px;
+  background-color: #59c3c3;
+  border-radius: 12px;
+}
+
+.maps-logined .img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 14px;
+  left: 14px;
+}
+
+.maps-logined .frame-3 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 48px;
+  position: absolute;
+  top: 48px;
+  left: 334px;
+}
+
+.maps-logined .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 500;
+  color: #4062bb;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .footer {
+  position: absolute;
+  width: 1440px;
+  height: 400px;
+  top: 1482px;
+  left: 0;
+  background-color: #59c3c3;
+}
+
+.maps-logined .frame-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: absolute;
+  top: 67px;
+  left: 91px;
+}
+
+.maps-logined .frame-5 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.maps-logined .p {
+  position: relative;
+  width: 189px;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 500;
+  color: #4062bb;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .frame-6 {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.maps-logined .img-2 {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.maps-logined .overlap-group-2 {
+  position: relative;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.maps-logined .ellipse {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  border: 1px solid;
+  border-color: #4062bb;
+}
+
+.maps-logined .group {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid;
+  border-color: #4062bb;
+}
+
+.maps-logined .ri-instagram-fill {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 13px;
+  left: 13px;
+}
+
+.maps-logined .vector {
+  position: absolute;
+  width: 20px;
+  height: 16px;
+  top: 15px;
+  left: 13px;
+}
+
+.maps-logined .frame-7 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 48px;
+  position: absolute;
+  top: 48px;
+  left: 892px;
+}
+
+.maps-logined .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: #1e1e1e;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #4062bb;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .text-wrapper-7 {
+  position: absolute;
+  top: 324px;
+  left: 97px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 500;
+  color: #4062bb;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.maps-logined .text-wrapper-8 {
+  position: absolute;
+  top: 41px;
+  left: 111px;
+  font-family: "Inconsolata", Helvetica;
+  font-weight: 400;
+  color: #4e98bf;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.maps-logined .group-wrapper {
+  position: absolute;
+  width: 648px;
+  height: 84px;
+  top: 1278px;
+  left: 68px;
+}
+
+.maps-logined .group-2 {
+  position: relative;
+  width: 652px;
+  height: 84px;
+}
+
+.maps-logined .text-wrapper-9 {
+  position: absolute;
+  width: 385px;
+  top: 0;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: #59c3c3;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+.maps-logined .text-wrapper-10 {
+  position: absolute;
+  width: 648px;
+  top: 46px;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #59c3c3;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+.maps-logined .frame-8 {
+  display: flex;
+  width: 629px;
+  height: 126px;
+  align-items: center;
+  gap: 64px;
+  position: absolute;
+  top: 1308px;
+  left: 1113px;
+}
+
+.maps-logined .group-3 {
+  position: absolute;
+  width: 630px;
+  height: 89px;
+  top: 1122px;
+  left: 68px;
+}
+
+.maps-logined .text-wrapper-11 {
+  position: absolute;
+  width: 353px;
+  top: 0;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: #59c3c3;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+.maps-logined .overlap-2 {
+  position: absolute;
+  width: 626px;
+  height: 48px;
+  top: 41px;
+  left: 0;
+}
+
+.maps-logined .text-wrapper-12 {
+  position: absolute;
+  width: 626px;
+  top: 5px;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #59c3c3;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+.maps-logined .div-wrapper {
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  position: absolute;
+  top: 0;
+  left: 177px;
+  background-color: #59c3c3;
+  border-radius: 8px;
+}
+
+.maps-logined .group-4 {
+  position: absolute;
+  width: 630px;
+  height: 96px;
+  top: 1123px;
+  left: 425px;
+}
+
+.maps-logined .overlap-3 {
+  position: absolute;
+  width: 626px;
+  height: 50px;
+  top: 46px;
+  left: 0;
+}
+
+.maps-logined .text-wrapper-13 {
+  position: absolute;
+  width: 626px;
+  top: 0;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #59c3c3;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+.maps-logined .frame-9 {
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  position: absolute;
+  top: 2px;
+  left: 232px;
+  background-color: #59c3c3;
+  border-radius: 8px;
+}
+
+.maps-logined .rectangle-2 {
+  position: absolute;
+  width: 30px;
+  height: 39px;
+  top: 669px;
+  left: 767px;
+  background-color: #ffffff;
+}
+
+.maps-logined .element-middle {
+  position: absolute;
+  width: 32px;
+  height: 43px;
+  top: 666px;
+  left: 765px;
+  object-fit: cover;
+}
+
+.maps-logined .image-2 {
+  width: 408px;
+  height: 306px;
+  top: 1015px;
+  left: 977px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.maps-logined .group-5 {
+  position: absolute;
+  width: 630px;
+  height: 89px;
+  top: 1282px;
+  left: 425px;
+}
+
+.maps-logined .line {
+  top: 1172px;
+  left: 660px;
+  position: absolute;
+  width: 95px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.maps-logined .line-2 {
+  top: 1173px;
+  left: 659px;
+  position: absolute;
+  width: 95px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.maps-logined .IBEN-removebg {
+  position: absolute;
+  width: 205px;
+  height: 154px;
+  top: 0;
+  left: 84px;
+  object-fit: cover;
+}
