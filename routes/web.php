@@ -17,5 +17,11 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 
+// Route::get('/maps', function () {
+//     return view('maps');
+// });
