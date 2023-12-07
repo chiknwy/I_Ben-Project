@@ -34,9 +34,9 @@
     
 
     {{-- Maps Here! --}}
+
     <div id="map" class="top-[20px]">
         {{-- <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
-    </div>
 
     
     
@@ -89,6 +89,7 @@
 
 
 
+
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
@@ -98,4 +99,5 @@
         }).addTo(map);
     </script>
 </body> 
+
 </html>
