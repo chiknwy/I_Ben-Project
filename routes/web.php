@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/maps', function () {
-    return view('maps');
-});
+
+
+Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
+
+// Route::get('/maps', function () {
+//     return view('maps');
+// });
+
