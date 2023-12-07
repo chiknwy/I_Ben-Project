@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/map.css"> {{-- CSS untuk ukuran map --}}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/> {{-- Leaflet CSS --}}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script> {{-- Leaflet JavaScript --}}
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">
@@ -33,10 +40,10 @@
     
 
     {{-- Maps Here! --}}
-    <div class="top-[20px]">
-        <img class=" " src="https://via.placeholder.com/1440x843" />
-    </div>
 
+    <div id="map" class="top-[20px]">
+        {{-- <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
+    </div>
     
     {{-- Contach here! --}}
     <div class="bg-indigo-900 py-10">
@@ -134,5 +141,20 @@
             <div class="text-indigo-700 text-lg font-medium whitespace-nowrap ml-3 mr-4 mt-24 max-md:max-w-full max-md:mr-2.5 max-md:mt-10">2023 all Right Reserved Term of use I-Ben</div>
           </div>
     </footer>
-</body>
+
+
+
+
+
+
+    <script>
+      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    </script>
+</body> 
+
 </html>
