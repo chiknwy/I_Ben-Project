@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+
 
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 
@@ -25,3 +28,7 @@ Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 //     return view('maps');
 // });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
