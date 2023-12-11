@@ -29,6 +29,6 @@ Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 // });
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
