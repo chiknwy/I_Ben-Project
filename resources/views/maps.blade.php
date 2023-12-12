@@ -160,6 +160,30 @@
           maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
+        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+	      var circle = L.circle([-8.116167984286907, 115.08773688558952], {
+		        color: 'red',
+		        fillColor: '#f03',
+		        fillOpacity: 0.5,
+		        radius: 500
+	      }).addTo(map).bindPopup('I am a circle.');
+
+
+	      var popup = L.popup()
+		      .setLatLng([-8.116167984286907, 115.08773688558952])
+		      .setContent('I am a standalone popup.')
+		      .openOn(map);
+
+	      function onMapClick(e) {
+	      	popup
+	      		.setLatLng(e.latlng)
+	      		.setContent('You clicked the map at ' + e.latlng.toString())
+	      		.openOn(map);
+	      }
+	      map.on('click', onMapClick);
     </script>
 </body> 
 </html>

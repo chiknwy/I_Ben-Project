@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\SpaceController;
 use App\Http\Controllers\Api\SpbuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,8 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::apiResource('spbu',SpbuController::class);
+
+Route::apiResource('space', SpaceController::class);
+
 }); 
+
