@@ -56,5 +56,6 @@
           </div>
         </div>
       </div>
+    </div>
 
 </x-dashboard-layout>
