@@ -26,5 +26,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-Route::apiResource('spbu',SpbuController::class);
+    Route::apiResource('spbu',SpbuController::class);
 }); 
