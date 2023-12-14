@@ -46,7 +46,7 @@
     
 
     {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]">
+    <div id="map" class="top-[20px]"></div>
 
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
