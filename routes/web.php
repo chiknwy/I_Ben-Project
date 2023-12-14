@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Models\CentrePoint;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CentreController;
+use App\Http\Controllers\SpaceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +24,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-
 
 
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
@@ -35,4 +38,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+Route::resource('centre-point', (CentrePoint::class));
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::resource('space', (SpaceController::class));
+
+// Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
+// Route::get('/space/data', [DataController::class, 'space'])->name('data-space');
+
