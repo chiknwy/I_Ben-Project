@@ -103,6 +103,8 @@
         </div>
       </div>
 
+      
+
     <footer>
         <div class="bg-teal-300 flex flex-col items-stretch px-20 py-12 max-md:px-5">
             <div class="flex justify-between gap-5 ml-3 mr-4 items-start max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
