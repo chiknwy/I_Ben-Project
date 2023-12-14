@@ -29,6 +29,15 @@
                             <div class="text-indigo-700 text-base font-medium whitespace-nowrap ml-20 mt-3 self-start max-md:ml-2.5">
                                 Enter your account details
                             </div>
+                            @if($errors->any())
+                                <div class="text-red text-base font-medium whitespace-nowrap ml-20 mt-3 self-start max-md:ml-2.5">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">
                                 <div class="text-indigo-700 text-opacity-90 text-base grow whitespace-nowrap">
                                     <div class="mb-4">
@@ -114,3 +123,10 @@
                         class="aspect-square object-contain object-center w-full overflow-hidden my-auto max-md:max-w-full max-md:mt-10"
                     />
                 </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
