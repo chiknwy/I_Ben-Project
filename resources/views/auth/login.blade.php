@@ -18,6 +18,7 @@
             <div class="bg-teal-300 flex grow flex-col w-full pl-10 pr-20 py-12 max-md:max-w-full max-md:mt-10 max-md:px-5">
               <h1 class="text-indigo-700 text-7xl font-bold leading-[70px] whitespace-nowrap mt-1.5 self-start max-md:max-w-full max-md:text-4xl max-md:leading-10">
                 WELCOME TO <br /> I-BEN
+                
               </h1>
               <div class="text-indigo-700 text-base font-medium whitespace-nowrap mt-2 self-start max-md:max-w-full">
                 Most Efficient Gasoline Shop
