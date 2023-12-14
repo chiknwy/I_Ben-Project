@@ -67,17 +67,19 @@
                 </div>
                 </form>
               <div class="items-center self-center flex w-[407px] max-w-full justify-between gap-5 mt-4 pr-20 max-md:pr-5">
-                <div class="text-blue-400 text-base grow whitespace-nowrap my-auto">
+                <div class="text-indigo-500 text-base grow whitespace-nowrap my-auto">
                   Don’t have an account?
                 </div>
                 <a href="{{ route('register') }}" class="text-gray-200 text-base whitespace-nowrap justify-center items-center bg-indigo-900 self-stretch grow pl-5 pr-1 py-3 rounded-lg">
                     <span class="flex items-center">  Sign Up</span>
                 </a>
               </div>
-              <div class="text-blue-400 text-base whitespace-nowrap justify-center items-stretch bg-teal-300 ml-24 mb-32 py-3 rounded-lg self-start max-md:ml-2.5 max-md:mb-10">
+              <a href="{{route('home')}}"><div 
+                class="text-indigo-500 text-lg font-medium text-base self-center whitespace-nowrap mt-6 max-md:max-w-full">
                 Login as Guest
               </div>
-              <div class="text-indigo-700 text-opacity-90 text-base self-center whitespace-nowrap mt-6 max-md:max-w-full">
+              </a>
+              <div class="text-indigo-500 text-lg font-medium text-base self-center whitespace-nowrap mt-6 max-md:max-w-full">
                 Forgot Password?
             </div>
             </div>
@@ -93,5 +95,5 @@
         </div>
     </div>
 </div>
-
 </body>
+</html> 

@@ -17,18 +17,24 @@
             <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
                 <a href="" class="text-black text-lg font-medium">Home</a>
-                <a href="{{url('/maps')}}"><div class="text-indigo-700 text-lg font-medium whitespace-nowrap" >Maps</div></a>
-                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Contacts</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
-              </form>
+                <a href="{{url('/maps')}}"><div class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Maps</div></a>
+                <a href="" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Contacts</a>
+                @if (Auth::check())
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
+                  </form>
+                @else
+                  <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
+                      <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
+                    </div>
+                @endif
               </div>
             </div>
            
           </div>
         </div>
-      </header>
+    </header>
     
       <div class="bg-teal-300 mt-0 ml-3.5 mr-4 pl-12 pr-20 pt-12 rounded-3xl max-md:max-w-full max-md:mr-2.5 max-md:px-5">
         <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
