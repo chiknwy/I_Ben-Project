@@ -175,7 +175,7 @@
 
 
 	      var popup = L.popup()
-		      .setLatLng([-8.116167984286907, 115.08773688558952])
+		      .setLatLng([-8.116167984286907, 115.08773688558952, 1])
 		      .setContent('I am a standalone popup.')
 		      .openOn(map);
 

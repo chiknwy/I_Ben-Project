@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
                         <div class="text-indigo-700 text-base font-medium whitespace-nowrap mt-2 self-start max-md:max-w-full">
                             Most Efficient Gasoline Shop
                         </div>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <h2 class="text-indigo-700 text-5xl font-bold whitespace-nowrap ml-20 mt-20 self-start max-md:text-4xl max-md:ml-2.5 max-md:mt-10">
                                 SIGN UP
@@ -38,14 +38,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="bg-indigo-700 bg-opacity-40 w-[381px] shrink-0 max-w-full h-px ml-20 mt-3 self-start max-md:ml-2.5"></div>
+
                             <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">
                                 <div class="text-indigo-700 text-opacity-90 text-base grow whitespace-nowrap">
                                     <div class="mb-4">
-                                        <label for="username" class="block text-sm font-medium text-gray-600"></label>
-                                        <input placeholder="Username" id="username" type="text" name="username" 
+                                        <label for="name" class="block text-sm font-medium text-gray-600"></label>
+                                        <input placeholder="name" id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
                                                class="border-none mt-1 p-1 block w-full bg-transparent outline-none">
+                                               @error('name')
+                                        <span class="text-red-500 text-sm" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="bg-indigo-700 bg-opacity-40 w-[381px] shrink-0 max-w-full h-px ml-20 mt-3 self-start max-md:ml-2.5"></div>
                             <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">
@@ -67,20 +75,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <img
+                            {{-- <img
                                 loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/a16f34ddf186e8c9fecf985a06b25f70e943483a67293bf1a1998d43f939c575?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&"
                                 class="aspect-square object-contain object-center w-6 overflow-hidden z-[1] shrink-0 max-w-full"
-                            />
+                            /> --}}
                             <div class="bg-indigo-700 bg-opacity-40 w-[381px] shrink-0 max-w-full h-px ml-20 mt-3 self-start max-md:ml-2.5"></div>
 
                             <div class="mb-4">
                                 <br>
-                                <button type="submit" class="bg-blue-500 text-white p-2 w-full rounded-md font-Poppins">
-                                    Sign Up
-                                </button>
+                                <div class="flex items-center justify-between">
+                                  
+                                    <button class="text-indigo-700 text-base font-bold whitespace-nowrap justify-center items-center bg-blue-500  px-16 py-3 rounded-xl">
+                                        <a href="#" class="signup-button">                                        {{ __('Register') }}
+                                        </a>
+                                      </button>
+                                </div>
                             </div>
                         </form>
+    
+                        
                         <div class="items-center self-center flex w-[407px] max-w-full justify-between gap-5 mt-4 pr-20 max-md:pr-5">
                             <div class="text-blue-400 text-base grow whitespace-nowrap my-auto">
                                 Already have an account?
@@ -99,4 +113,4 @@
                         src="{{ URL('img/maps/iben-4-removebg-preview-5.png') }}"
                         class="aspect-square object-contain object-center w-full overflow-hidden my-auto max-md:max-w-full max-md:mt-10"
                     />
-                </div
+                </div>
