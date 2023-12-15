@@ -23,22 +23,30 @@
             </div>
             <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
-                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Home</a>
+                <a href="{{url('/home')}}" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Home</a>
                 <div class="text-black text-lg font-medium">Maps</div>
-                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Contacts</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
-              </form>
+                <a href="" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Contacts</a>
+                @if (Auth::check())
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
+                  </form>
+                @else
+                  <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
+                      <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
+                    </div>
+                @endif
               </div>
             </div>
             <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
+              @if (Auth::check())
               <div class="bg-gray-200 flex items-center justify-between gap-5 w-full my-auto pl-5 pr-2 py-2 rounded-xl max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                 <input type="text" class="text-indigo-700 text-lg font-medium grow whitespace-nowrap my-auto w-full bg-transparent outline-none" placeholder="Search" />
                 <div class="bg-teal-300 flex w-1/2 md:w-12 flex-col justify-center items-center h-12 px-3.5 rounded-xl">
                   <img loading="lazy" src="{{url('img/maps/search.svg')}}" class="aspect-square object-contain object-center w-full overflow-hidden" />
                 </div>              
               </div>
+              @endif
             </div>
           </div>
         </div>
@@ -46,7 +54,7 @@
     
 
     {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]">
+    <div id="map" class="top-[20px]"></div>
 
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
@@ -102,6 +110,8 @@
           </div>
         </div>
       </div>
+
+      
 
     <footer>
         <div class="bg-teal-300 flex flex-col items-stretch px-20 py-12 max-md:px-5">
@@ -160,6 +170,30 @@
           maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
+        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+	      var circle = L.circle([-8.116167984286907, 115.08773688558952], {
+		        color: 'red',
+		        fillColor: '#f03',
+		        fillOpacity: 0.5,
+		        radius: 500
+	      }).addTo(map).bindPopup('I am a circle.');
+
+
+	      var popup = L.popup()
+		      .setLatLng([-8.116167984286907, 115.08773688558952, 1])
+		      .setContent('I am a standalone popup.')
+		      .openOn(map);
+
+	      function onMapClick(e) {
+	      	popup
+	      		.setLatLng(e.latlng)
+	      		.setContent('You clicked the map at ' + e.latlng.toString())
+	      		.openOn(map);
+	      }
+	      map.on('click', onMapClick);
     </script>
 </body> 
 </html>
