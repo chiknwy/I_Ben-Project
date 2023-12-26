@@ -37,4 +37,39 @@ class AuthController extends Controller
         ], 200);
 
     }    
+
+    public function loginadmin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => ['required', 'string', 'min:8']
+        ]);
+        
+        $user = User::where('email', $request->email)->first();
+        if (!$user || ! Hash::check($request->password, $user->password)){
+            return response([
+                'success' => false,
+                'message' => ['These credentials do not match our records.']
+            ], 404);
+
+        }
+        
+        if ($user->usertype != 1) {
+            return response([
+                'success' => false,
+                'message' => ['You are not authorized to access this resource.']
+            ], 403);
+        }
+        
+        $user->tokens()->delete();
+        $token=$user->createToken($request->email)->plainTextToken;
+        return response()->json([
+            'success' => true,
+            'message' => 'Login Success',
+            'data' => [
+                'user' => $user,
+                'token' => $token
+            ]
+        ], 200);
+    }
 }

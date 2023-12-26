@@ -35,7 +35,6 @@ Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Auth::routes();
 
 Route::resource('centre-point', (CentrePoint::class));
