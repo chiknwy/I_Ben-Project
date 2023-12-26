@@ -159,10 +159,6 @@
           </div>
     </footer>
 
-
-
-
-
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
@@ -170,7 +166,7 @@
           maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-
+        
         var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
         .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 

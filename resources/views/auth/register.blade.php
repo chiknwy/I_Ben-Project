@@ -47,6 +47,17 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="bg-indigo-700 bg-opacity-40 w-[381px] shrink-0 max-w-full h-px ml-20 mt-3 self-start max-md:ml-2.5"></div>
+                            <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">
+                                <div class="text-indigo-700 text-opacity-90 text-base grow whitespace-nowrap">
+                                    <div class="mb-4">
+                                        <label for="phone" class="block text-sm font-medium text-gray-600"></label>
+                                        <input placeholder="Phone" id="phone" type="phone" name="phone" value="{{ old('phone') }}" required autofocus
+                                               class="border-none mt-1 p-1 block w-full bg-transparent outline-none">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="bg-indigo-700 bg-opacity-40 w-[381px] shrink-0 max-w-full h-px ml-20 mt-3 self-start max-md:ml-2.5"></div>
 
                             <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">

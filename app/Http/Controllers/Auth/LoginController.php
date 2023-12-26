@@ -22,6 +22,10 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+    public function showLoginFormAdmin()
+    {
+        return view('auth.loginadmin');
+    }
 
     public function login(Request $request)
     {
@@ -40,6 +44,28 @@ class LoginController extends Controller
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function loginadmin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->usertype == 1) {
+                $request->session()->regenerate();
+                return redirect()->intended($this->redirectTo);
+            }
+        }
+
+        return back()->withErrors([
+            'email' => 'You are not authorized to access this page.',
         ]);
     }
 

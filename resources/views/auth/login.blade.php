@@ -87,13 +87,20 @@
                     Login as Guest
                   </div>
                   </a>
+                  
                 </div>
-                <a href="{{ route('register') }}" class="text-gray-200 text-base whitespace-nowrap justify-center items-center bg-indigo-900 self-stretch grow pl-7 pr-1 py-3 rounded-lg">
+                <a href="{{ route('register') }}" class="text-gray-200 text-base whitespace-nowrap justify-center items-center bg-indigo-900 self-stretch grow pl-6 pr-1 py-3 rounded-lg">
                     <span class="flex items-center">  Sign Up</span>
                 </a>
+                <br>
               </div>
               <div class="text-indigo-500 text-lg font-medium text-base self-center whitespace-nowrap mt-6 max-md:max-w-full">
-                Forgot Password?
+                
+                <a  href="{{ route('loginadmin') }}"><br><div 
+                  class="text-indigo-500 font-medium">
+                  Login as admin
+                </div>
+                </a>
             </div>
             </div>
           </div>
