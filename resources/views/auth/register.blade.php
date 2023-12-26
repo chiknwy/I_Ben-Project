@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <title>Register</title>
 </head>
 <body>
@@ -29,6 +29,15 @@
                             <div class="text-indigo-700 text-base font-medium whitespace-nowrap ml-20 mt-3 self-start max-md:ml-2.5">
                                 Enter your account details
                             </div>
+                            @if($errors->any())
+                                <div class="text-red text-base font-medium whitespace-nowrap ml-20 mt-3 self-start max-md:ml-2.5">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="items-stretch flex w-[339px] max-w-full justify-between gap-5 ml-20 mt-6 self-start max-md:ml-2.5">
                                 <div class="text-indigo-700 text-opacity-90 text-base grow whitespace-nowrap">
                                     <div class="mb-4">
@@ -61,7 +70,8 @@
                                     <div class="mb-4">
                                         <label for="password" class="block text-sm font-medium text-gray-600"></label>
                                         <input placeholder="Password" id="password" type="password" name="password" required
-                                               class="border-none mt-1 p-1 block w-full bg-transparent outline-none">
+                                               class="border-none mt-1 p-1 w-full bg-transparent outline-none">
+                                               <i class="bi bi-eye-slash inline" id="togglePassword" ></i>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +81,9 @@
                                     <div class="mb-4">
                                         <label for="password_confirmation" class="block text-sm font-medium text-gray-600"></label>
                                         <input placeholder="Re-Type Password" id="password_confirmation" type="password" name="password_confirmation" required
-                                               class="border-none mt-1 p-1 block w-full bg-transparent outline-none">
+                                               class="border-none mt-1 p-1 w-full bg-transparent outline-none">
+                                               <i class="bi bi-eye-slash inline" id="togglePassword1" ></i>
+
                                     </div>
                                 </div>
                             </div>
@@ -84,23 +96,22 @@
 
                             <div class="mb-4">
                                 <br>
-                                <div class="flex items-center justify-between">
-                                  
-                                    <button class="text-indigo-700 text-base font-bold whitespace-nowrap justify-center items-center bg-blue-500  px-16 py-3 rounded-xl">
-                                        <a href="#" class="signup-button">                                        {{ __('Register') }}
-                                        </a>
-                                      </button>
+                                <div class="mb-4">
+                                    <br>
+                                    <button type="submit" class="bg-blue-500 text-white p-2 w-full rounded-md font-Poppins">
+                                        Register
+                                    </button>
                                 </div>
                             </div>
                         </form>
     
                         
                         <div class="items-center self-center flex w-[407px] max-w-full justify-between gap-5 mt-4 pr-20 max-md:pr-5">
-                            <div class="text-blue-400 text-base grow whitespace-nowrap my-auto">
+                            <div class="text-blue-800 text-base grow whitespace-nowrap my-auto">
                                 Already have an account?
                             </div>
-                            <a href="{{ route('login') }}" class="text-gray-200 text-base whitespace-nowrap justify-center items-center bg-indigo-900 self-stretch grow pl-5 pr-1 py-3 rounded-lg">
-                                <span class="flex items-center">  Login</span>
+                            <a href="{{ route('login') }}" class="text-gray-200 text-base whitespace-nowrap justify-center items-center bg-indigo-900 self-stretch grow pl-7 pr-1 py-3 rounded-lg">
+                                <span class="flex items-center">Login</span>
                             </a>
                         </div>
 
@@ -114,3 +125,39 @@
                         class="aspect-square object-contain object-center w-full overflow-hidden my-auto max-md:max-w-full max-md:mt-10"
                     />
                 </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const togglePassword1 = document.querySelector("#togglePassword1");
+        const password = document.querySelector("#password");
+        
+        togglePassword1.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password_confirmation.getAttribute("type") === "password" ? "text" : "password";
+            password_confirmation.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+      
+        // prevent form submit
+        // const form = document.querySelector("form");
+        // form.addEventListener('submit', function (e) {
+        //     e.preventDefault();
+        // });
+      </script>
+</body>
+</html>
