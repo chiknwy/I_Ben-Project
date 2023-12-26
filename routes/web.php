@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Payment\TripayController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,9 @@ use App\Http\Controllers\Payment\TripayController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('donasi');
 });
 
+Route::post('transaksi_process', 'transaksi@process')->name('process');
 
-Route::get('/transactionPage', [TripayController::class, 'getTransactionPage'])->name('transactionPage');
+
