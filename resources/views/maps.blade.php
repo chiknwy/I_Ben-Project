@@ -11,6 +11,8 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script> {{-- Leaflet JavaScript --}}
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
   <title>Map</title>
 </head>
@@ -160,18 +162,6 @@
           maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-
-        var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
-        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
-	      var circle = L.circle([-8.116167984286907, 115.08773688558952], {
-		        color: 'red',
-		        fillColor: '#f03',
-		        fillOpacity: 0.5,
-		        radius: 500
-	      }).addTo(map).bindPopup('I am a circle.');
-
-
 	      var popup = L.popup()
 		      .setLatLng([-8.116167984286907, 115.08773688558952])
 		      .setContent('I am a standalone popup.')
@@ -184,6 +174,30 @@
 	      		.openOn(map);
 	      }
 	      map.on('click', onMapClick);
+
+
+
+
+
+        var gasIcon = L.icon({
+            iconUrl: 'img/icon/icongas.png',
+            iconSize:     [24, 28], // size of the icon
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+          });
+
+        var marker = L.marker([-8.116167984286907, 115.08773688558952], {icon:gasIcon}).addTo(map)
+        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+        $( document ).ready(function() {
+            $.getJson('/titik/json', function(data) {
+              alert(data);
+            });
+            
+
+
+        });
     </script>
 </body> 
 </html>

@@ -7,6 +7,7 @@ use App\Models\CentrePoint;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\TitikController;
 
 
 /*
@@ -27,13 +28,14 @@ Route::get('/', function () {
 
 
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
+Route::get('/maptes', [TitikController::class, 'index']);
+Route::get('/titik/json', [TitikController::class, 'json']);
 
 // Route::get('/maps', function () {
 //     return view('maps');
 // });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
