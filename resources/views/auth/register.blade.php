@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
     <title>Register</title>
 </head>
 <body>
@@ -125,6 +126,7 @@
                         class="aspect-square object-contain object-center w-full overflow-hidden my-auto max-md:max-w-full max-md:mt-10"
                     />
                 </div>
+
 
 
             </div>
