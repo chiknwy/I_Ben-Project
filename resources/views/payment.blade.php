@@ -15,27 +15,31 @@
                     <h4>Donasi Sosial Laravel</h4>
                     <form method="post" action="{{ route('process') }}">
                         @csrf
+                        @if (Auth::check())
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+
+                            
                         
                         <div class="form-group">
                           <label for="nama">Nama :</label>
-                          <input type="text" required name="nama" class="form-control" id="nama">
+                          <input type="text" required name="nama" class="form-control" id="nama" value="{{Auth::user()->name}}">
                         </div>
-                        
+
                         <div class="form-group">
                           <label for="email">Email :</label>
-                          <input type="email" required name="email" class="form-control" id="email">
+                          <input type="email" required name="email" class="form-control" id="email" value="{{ Auth::user()->email }}" >
                         </div>
                         
                         <div class="form-group">
                           <label for="nohp">No Hp :</label>
-                          <input type="text" required name="nohp" class="form-control" id="nohp">
+                          <input type="text" required name="nohp" class="form-control" id="nohp" value="{{ Auth::user()->phone }}" >
                         </div>
                         
                         <div class="form-group">
                           <label for="nominal">Nominal :</label>
                           <input type="number" required name="nominal" class="form-control" id="nominal">
                         </div>
-                      
+                        @endif
                         <b>metode pembayaram</b>
                       @foreach($metode as $m)
                       <div class="form-check">

@@ -6,75 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>PAYMENT</title>
 </head>
 
 <body class="bg-gray-100">
+  <header class="py-0 md:py-1 bg-indigo-900">
+    <div class="px-5">
+      <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+        <div class="flex flex-col items-stretch w-[24%] max-md:w-full max-md:ml-0">
+          <img loading="lazy" src="{{URL('img/maps/iben-4-removebg-preview-5.png')}}" class="aspect-[1.33] object-contain object-center w-[150px] overflow-hidden shrink-0 max-w-full grow max-md:mt-10" />
+        </div>
+        <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
+          <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
+            <a href="{{url('/home')}}" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Home</a>
+            <a href="{{url('/maps')}}"><div class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Maps</div></a>
+            <a href=""  class="text-black text-lg font-medium" >Payment</a>
+        </div>
+      </div>
+        
+      </div>
+    </div>
+  </header>
     <div class="container mx-auto px-4 py-8">
-        <!-- Header Section -->
+        {{-- <!-- Header Section -->
             <div class="flex items-center mb-8 justify-between ">
                 <!-- Payment Details Section -->
                 <div class="bg-indigo-900 py-6 mb-8 rounded-lg text-center flex-grow">
                     <img loading="lazy" src="{{URL('img/maps/iben-4-removebg-preview-5.png')}}" class="aspect-[1.33] object-contain object-center w-[150px] overflow-hidden shrink-0 max-w-full grow max-md:mt-10" />
                 </div>
-            </div>
+            </div> --}}
 
         <!-- Order Details Section -->
         
-                        <div class="py-6 mb-8 rounded-lg text-center flex justify-center items-center"> <!-- Menengahkan konten di tengah layar -->
-                            <div class="bg-white border border-[color:var(--Body-Light-grey,#EEF2F7)] shadow mx-auto self-center z-[1] flex w-[90%] max-w-full flex-col pl-6 pr-20 py-6 rounded-2xl border-solid items-start max-md:px-5">
-                                
-                                <h1 class="text-gray-900 text-lg font-bold leading-6 max-md:max-w-full items-center mb-6"> Order #1646988613_694623663 </h1>
-                                    
-                                <div class="justify-between items-stretch flex w-[552px] max-w-full gap-5 mt-6 max-md:flex-wrap">
-                                    <!-- Harga -->
-                                    <div class="flex flex-wrap">
-                    <div class="w-1/2 pr-8"> <!-- Menambahkan padding di sisi kanan untuk menjauhkan deskripsi dari label harga -->
-                        <div class="mt-6">
-                            <label for="harga" class="block text-sm font-semibold text-gray-900">Masukkan Harga:</label>
-                            <input type="text" id="harga" name="harga" class="text-gray-900 text-5xl font-semibold leading-9 border border-gray-300 rounded-md mt-2 p-2 w-full" placeholder="Rp. 0">
-                        </div>
-                    </div>
-                    
-                    <div class="w-1/2 pl-4">
-                        <!-- Deskripsi -->
-                        <div class="mt-6">
-                            <label for="jenisBbm" class="block text-sm font-semibold text-gray-900 leading-6 whitespace-nowrap"> Description </label>
-                            <input type="text" id="jenisBbm" name="jenisBbm" class="text-gray-900 text-3xl font-semibold leading-6 border border-gray-300 rounded-md mt-2 p-2 w-full" placeholder="Jenis BBM">
-                        </div>
-                    </div>
-                </div>
+        <form method="post" action="{{ route('process') }}">
+          @csrf
+          @if (Auth::check())
+              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
 
-                    
-                </div>
-                <h2 class="text-gray-900 text-3xl mt-5 font-semibold mb-4 justify-center">Select a payment method:</h2>
-                <form>
-                    <div class="flex items-center mb-4">
-                        <input type="checkbox" id="ovo" class="mr-2">
-                        <label for="ovo" class="text-indigo-900 text-base font-medium">OVO</label>
-                    </div>
-                    <div class="flex items-center mb-4">
-                        <input type="checkbox" id="dana" class="mr-2">
-                        <label for="dana" class="text-indigo-900 text-base font-medium">Dana</label>
-                    </div>
-                    <div class="flex items-center mb-4">
-                        <input type="checkbox" id="gopay" class="mr-2">
-                        <label for="gopay" class="text-indigo-900 text-base font-medium">Gopay</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="bank-transfer" class="mr-2">
-                        <label for="bank-transfer" class="text-indigo-900 text-base font-medium">Bank Transfer</label>
-                    </div>
-                </form>
-            </div>
-                
-        </div>
+              
+          
+          <div class="form-group">
+            <label for="nama">Nama :</label>
+            <input type="text" required name="nama" class="form-control" id="nama" value="{{Auth::user()->name}}">
+          </div>
 
-        <!-- Confirm Button -->
-        <div class="flex justify-center">
-            <a href="/barcode" class="bg-green-500 text-white px-8 py-4 rounded-lg text-sm font-bold">Confirm</a>
-        </div>
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" required name="email" class="form-control" id="email" value="{{ Auth::user()->email }}" >
+          </div>
+          
+          <div class="form-group">
+            <label for="nohp">No Hp :</label>
+            <input type="text" required name="nohp" class="form-control" id="nohp" value="{{ Auth::user()->phone }}" >
+          </div>
+          
+          <div class="form-group">
+            <label for="nominal">Nominal :</label>
+            <input type="number" required name="nominal" class="form-control" id="nominal" oninput="validateNominal()">
+            <div id="nominalError" style="color: red;"></div>
+          </div>
+          @endif
+          <b>metode pembayaram</b>
+          @foreach($metode as $m)
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" value ="{{$m->code}}" required name="metode">{{$m->name}}
+              </label>
+          </div>
+          @endforeach
+          <br>  
+            <button type="submit" class="btn btn-success bg-blue-400">Buy</button>
+        </form>     
         
     </div>
 
@@ -123,6 +128,22 @@
             </div>
           </div>
     </footer>
+    <script>
+      function validateNominal() {
+        var nominalInput = document.getElementById('nominal');
+        var errorDiv = document.getElementById('nominalError');
+    
+        var nominalValue = parseFloat(nominalInput.value);
+    
+        if (nominalValue < 10000 || isNaN(nominalValue)) {
+          errorDiv.textContent = 'Minimum nominal is Rp 10.000';
+          nominalInput.setCustomValidity('Invalid');
+        } else {
+          errorDiv.textContent = '';
+          nominalInput.setCustomValidity('');
+        }
+      }
+    </script>
 </body>
 
 </html>

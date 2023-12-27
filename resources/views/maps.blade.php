@@ -26,11 +26,10 @@
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
                 <a href="{{url('/home')}}" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Home</a>
                 <div class="text-black text-lg font-medium">Maps</div>
-                <a href="" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Contacts</a>
                 @if (Auth::check())
                   <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
+                    <button type="submit" class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Logout</button>
                   </form>
                 @else
                   <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
@@ -180,7 +179,7 @@ var circle = L.circle([-8.116167984286907, 115.08773688558952], {
 
 var popup = L.popup()
   .setLatLng([-8.116167984286907, 115.08773688558952, 1])
-  .setContent('I am a standalone popup.')
+  .setContent('<a href={{url("/transaction")}}>Pertamina Gajah Mada.</a>')
   .openOn(map);
 
 function onMapClick(e) {
