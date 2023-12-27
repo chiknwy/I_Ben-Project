@@ -182,9 +182,6 @@
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
           });
 
-        var marker = L.marker([-8.116167984286907, 115.08773688558952], {icon:gasIcon}).addTo(map)
-        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {
               $.each(data, function(index) {
