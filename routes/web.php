@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
+Route::get('/pay', [HomeController::class, 'pay'])->name('pay');
+Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 
 // Route::get('/maps', function () {
 //     return view('maps');
