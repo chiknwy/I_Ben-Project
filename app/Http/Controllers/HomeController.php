@@ -30,4 +30,12 @@ class HomeController extends Controller
     public function simple_map(){
         return view('maps');
     }
+
+    public function pay(){
+        return view('pay');
+    }
+
+    public function barcode(){
+        return view('barcode');
+    }
 }
