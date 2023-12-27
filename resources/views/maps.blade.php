@@ -11,6 +11,8 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script> {{-- Leaflet JavaScript --}}
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <title>Map</title>
@@ -166,6 +168,7 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
 var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
 .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
   
@@ -189,6 +192,7 @@ function onMapClick(e) {
     .openOn(map);
 }
 map.on('click', onMapClick);  
+
     </script>
     
 </body> 
