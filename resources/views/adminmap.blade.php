@@ -77,7 +77,7 @@
                         <div class="card-body">
                             <form action="{{ route('centre-point.store') }}" method="post">
                                 @csrf
-                                
+                                 
                                 <div class="form-group">
                                     <label for="">Latitude</label>
                                     <input type="text" class="form-control" name="latitude" id="latitude">
