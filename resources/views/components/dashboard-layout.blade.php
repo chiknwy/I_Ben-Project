@@ -86,10 +86,13 @@
     </footer>
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
@@ -98,6 +101,12 @@
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
     </script>
+<<<<<<< HEAD
 </body> 
 
 </html>
+=======
+</body> 
+
+</html>
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51

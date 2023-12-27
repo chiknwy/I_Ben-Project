@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
+    'Yajra\\DataTables\\' => array($vendorDir . '/yajra/laravel-datatables-oracle/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Tripay\\' => array($vendorDir . '/muhammadnan/tripay-payment-gateway/src'),
@@ -67,12 +68,14 @@ return array(
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'League\\Config\\' => array($vendorDir . '/league/config/src'),
     'League\\CommonMark\\' => array($vendorDir . '/league/commonmark/src'),
+    'Laravel\\Ui\\' => array($vendorDir . '/laravel/ui/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
     'Laravel\\SerializableClosure\\' => array($vendorDir . '/laravel/serializable-closure/src'),
     'Laravel\\Sanctum\\' => array($vendorDir . '/laravel/sanctum/src'),
     'Laravel\\Sail\\' => array($vendorDir . '/laravel/sail/src'),
     'Laravel\\Prompts\\' => array($vendorDir . '/laravel/prompts/src'),
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections', $vendorDir . '/laravel/framework/src/Illuminate/Conditionable'),
+    'Illuminate\\Foundation\\Auth\\' => array($vendorDir . '/laravel/ui/auth-backend'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\UriTemplate\\' => array($vendorDir . '/guzzlehttp/uri-template/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),

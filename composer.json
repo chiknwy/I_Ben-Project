@@ -10,8 +10,15 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+<<<<<<< HEAD
         "livewire/volt": "^1.6",
         "muhammadnan/tripay-payment-gateway": "^2.0"
+=======
+        "laravel/ui": "^4.2",
+        "livewire/volt": "^1.6",
+        "muhammadnan/tripay-payment-gateway": "^2.0",
+        "yajra/laravel-datatables-oracle": "^10.3.1"
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

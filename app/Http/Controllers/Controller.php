@@ -21,4 +21,8 @@ class Controller extends BaseController
             'sandbox' // fill for sandbox mode, leave blank if in production mode
         );
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51

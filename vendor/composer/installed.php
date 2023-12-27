@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => 'd04c9f2ef5899cac8ea1bfadc2aa2ae2dbc59699',
+=======
+        'reference' => '2b28c77a79266fb3d915a29b9f1340a7d2b8e1d4',
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -382,7 +386,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => 'd04c9f2ef5899cac8ea1bfadc2aa2ae2dbc59699',
+=======
+            'reference' => '2b28c77a79266fb3d915a29b9f1340a7d2b8e1d4',
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -439,6 +447,15 @@
             'reference' => 'b936d415b252b499e8c3b1f795cd4fc20f57e1f3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'laravel/ui' => array(
+            'pretty_version' => 'v4.2.3',
+            'version' => '4.2.3.0',
+            'reference' => 'eb532ea096ca1c0298c87c19233daf011fda743a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -1331,6 +1348,15 @@
             'reference' => '11cb2199493b2f8a3b53e7f19068fc6aac760991',
             'type' => 'library',
             'install_path' => __DIR__ . '/../webmozart/assert',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'yajra/laravel-datatables-oracle' => array(
+            'pretty_version' => 'v10.11.1',
+            'version' => '10.11.1.0',
+            'reference' => '6fb8571f9da39b8f256298e98bbcf6dd86900888',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../yajra/laravel-datatables-oracle',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

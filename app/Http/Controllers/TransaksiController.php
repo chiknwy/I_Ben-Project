@@ -10,7 +10,7 @@ class TransaksiController extends Controller
     public function index() {
         $metode = $this->tripay->initChannelPembayaran()->getData()[0]->payment;
        // dd($metode);
-        return view('donasi')-> with('metode', $metode);
+        return view('pay')-> with('metode', $metode);
     }
 
     public function process(Request $request){
@@ -25,7 +25,7 @@ class TransaksiController extends Controller
         $transaksi->email= $email;
         $transaksi->nominal = $nominal;
         $transaksi->nohp = $nohp;
-        $transaksi->invoice = "donasi_" . rand(20,200);
+        $transaksi->invoice = "IBEN_" . rand(20,200);
         $transaksi->save();
 
         $merchantRef = $transaksi->invoice;
@@ -36,9 +36,9 @@ class TransaksiController extends Controller
         
         $signature = $init->createSignature();
 
-        $transaction = $init->closeTransaction(); // define your transaction type, for close transaction use `closeTransaction()`
+        $transaction = $init->closeTransaction(); // define your transaction type, for close transaction use closeTransaction()
         $transaction->setPayload([
-            'method'            => $metode, // IMPORTANT, dont fill by `getMethod()`!, for more code method you can check here https://tripay.co.id/developer
+            'method'            => $metode, 
             'merchant_ref'      => $merchantRef,
             'amount'            => $init->getAmount(),
             'customer_name'     => $transaksi->nama,
@@ -46,8 +46,8 @@ class TransaksiController extends Controller
             'customer_phone'    => $transaksi->nohp,
             'order_items'       => [
                 [
-                    'sku'       => 'DONASISOSIAL',
-                    'name'      => 'DONASI SOSIAL',
+                    'sku'       => 'IBEN',
+                    'name'      => 'BENSIN',
                     'price'     => $init->getAmount(),
                     'quantity'  => 1
                 ]
