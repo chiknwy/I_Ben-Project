@@ -45,7 +45,6 @@ Route::get('/adminpage', [HomeController::class, 'adminpage']);
 
 
 Route::get('/maps', [HomeController::class, 'user_map'])->name('maps');
-Route::get('/adminpage/create', [HomeController::class, 'admin_map'])->name('maps');
 Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 
 
@@ -64,6 +63,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/transaction', [TransaksiController::class, 'index'])->name('index');
+    Route::get('/adminpage/create', [HomeController::class, 'admin_map'])->name('maps');
+    Route::get('/adminmap/{id}/edit', [HomeController::class, 'admin_edit'])->name('edit');
+    Route::put('/adminmap/{id}', [HomeController::class, 'update'])->name('update');
 });
 
 Route::middleware(['auth'])->group(function(){

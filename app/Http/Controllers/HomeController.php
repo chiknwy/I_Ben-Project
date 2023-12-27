@@ -63,6 +63,37 @@ class HomeController extends Controller
         }
     }
 
+    public function admin_edit($id){
+        $admin = auth()->user();
+        $users = Titik::all();
+        $title = Titik::find($id);
+
+        if (auth()->check() && $admin->usertype == 1) {
+            return view('admin.adminedit',compact('users','title'));
+        }
+        else{
+            return redirect()->route('home')->with('error', 'You are not an admin!');
+        }
+    }
+
+    public function update(request $request, $id){
+        $titik = Titik::find($id);
+
+        $titik->nama = $request->input('nama');
+        $titik->alamat = $request->input('alamat');
+        $titik->latitude = $request->input('latitude');
+        $titik->longitude = $request->input('longitude');
+        $titik->pertalite = $request->input('pertalite');
+        $titik->pertamax = $request->input('pertamax');
+        $titik->pertamax_turbo = $request->input('pertamax_turbo');
+        $titik->solar = $request->input('solar');
+        $titik->save();
+
+        return redirect('/adminpage')->with('success', 'Data berhasil diupdate');
+    }
+
+
+
     public function adminpage()
     {
         $titik = Titik::all();
@@ -127,20 +158,20 @@ class HomeController extends Controller
         return view('leaflet.get_coordinate');
     }
 
-    public function spots()
-    {
-        $centerPoint = CentrePoint::get()->first();
-        $spot = Spot::get();
+    // public function spots()
+    // {
+    //     $centerPoint = CentrePoint::get()->first();
+    //     $spot = Spot::get();
 
-        return view('frontend.home',[
-            'centerPoint' => $centerPoint,
-            'spot' => $spot
-        ]);
-    }
+    //     return view('frontend.home',[
+    //         'centerPoint' => $centerPoint,
+    //         'spot' => $spot
+    //     ]);
+    // }
 
-    public function detailSpot($slug)
-    {
-        $spot = Spot::where('slug',$slug)->first();
-        return view('frontend.detail',['spot' => $spot]);
-    }
+    // public function detailSpot($slug)
+    // {
+    //     $spot = Spot::where('slug',$slug)->first();
+    //     return view('frontend.detail',['spot' => $spot]);
+    // }
 }

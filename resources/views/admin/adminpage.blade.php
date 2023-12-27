@@ -10,6 +10,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>adminpage</title>
+    <style>
+        div.dataTables_wrapper div.dataTables_filter input {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            color: #000000;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 4px;
+            outline: none;
+        }
+
+        #myTable_paginate {
+            margin-top: 10px;
+        }
+
+        #myTable_previous,
+        #myTable_next {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        #myTable_previous:hover,
+        #myTable_next:hover {
+            background-color: #333;
+        }
+
+        #myTable_paginate .paginate_button:not(:last-child),
+        #myTable_paginate .paginate_button:last-child {
+            margin-right: 10px;
+        }
+
+        #myTable {
+            border: 1px solid black;
+        }
+
+        #myTable tbody {
+            background-color: rgba(14, 15, 25, 0.433);
+        }
+        *::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -123,7 +182,7 @@
                                 
                                     
                                     <a href="{{ url('/adminmap/' . $titik->id . '/edit') }}" class="text-blue-400" >Edit</a>
-                                    <form method="post" action="{{ url('/adminmap/' . $titik->id) }}" onsubmit="return confirmAndAlert('Are you sure you want to delete this book?', 'Deleted')">
+                                    <form method="post" action="{{ url('/adminmap/' . $titik->id) }}" onsubmit="return confirmAndAlert('Are you sure you want to delete this Data?', 'Deleted')">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="text-red-400">Delete</button>
@@ -226,9 +285,54 @@
           </div>
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = '{{ session('success') }}';
+        var action = '{{ session('action') }}';
+
+        if (successMessage && action) {
+            alert(successMessage);
+
+            // You can customize the alert message based on the action
+            // if (action === 'create') {
+            //     alert('New book created!');
+            // } else if (action === 'edit') {
+            //     alert('Book updated!');
+            // }
+        }
+        });
+            function showAlert(action) {
+                alert(action );
+            }
+
+            function confirmAndAlert(message, action) {
+                var confirmed = confirm(message);
+                if (confirmed) {
+                    showAlert(action);
+                }
+                return confirmed;
+            }
+
+            $(document).ready(function () {
+                let table = $('#myTable').DataTable({
+                    "lengthMenu": [5, 10, 15, 20, 25, 50, 75, 100],
+                    "ordering": true,
+                    "searching": true,
+                    "info": true,
+                    "paging": true,
+                    "responsive": true,
+                    "columnDefs": [
+                        { "orderable": false, "targets": [6] }
+                    ],
+                });
+            });
+    </script>
 
 </html>
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Kode sebelumnya untuk search...
         
@@ -290,4 +394,4 @@
         showPage(currentPage);
         renderPagination();
     });
-</script>
+</script> --}}

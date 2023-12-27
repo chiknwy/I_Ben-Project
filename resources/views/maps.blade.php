@@ -17,6 +17,10 @@
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
+  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">  
@@ -162,10 +166,17 @@
             </div>
           </div>
     </footer>
+
+    @if(session('error'))
+    <script>alert('{{ session('error') }}');</script>
+@endif
+@if(session('success'))
+    <script>alert('{{ session('success') }}');</script>
+@endif
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
     <script>
-      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
+      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 5);
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
@@ -202,11 +213,21 @@
                 })
                 .addTo(map)
                 .bindPopup(html)
-                .openPopup();
+                // .openPopup();
 
               })
             });
         });
+        var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+
+        var results = new L.LayerGroup().addTo(map);
+
+          searchControl.on('results', function(data){
+            results.clearLayers();
+            for (var i = data.results.length - 1; i >= 0; i--) {
+              results.addLayer(L.marker(data.results[i].latlng));
+            }
+          });
 
     </script>
     

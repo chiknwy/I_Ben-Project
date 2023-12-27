@@ -54,7 +54,7 @@
                 @endif
               </div>
             </div>
-            <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
+            {{-- <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
               @if (Auth::check())
               <div class="bg-gray-200 flex items-center justify-between gap-5 w-full my-auto pl-5 pr-2 py-2 rounded-xl max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                 <input type="text" class="text-indigo-700 text-lg font-medium grow whitespace-nowrap my-auto w-full bg-transparent outline-none" placeholder="Search" />
@@ -63,7 +63,7 @@
                 </div>              
               </div>
               @endif
-            </div>
+            </div> --}}
           </div>
         </div>
       </header>

@@ -22,7 +22,7 @@ class CentrePointController extends Controller
      */
     public function index()
     {
-        return view('backend.CentrePoint.index');
+        return view('maps');
     }
 
     /**
@@ -80,9 +80,9 @@ class CentrePointController extends Controller
         $centerPoint->save();
 
         if ($centerPoint) {
-            return to_route('maps')->with('success','Data berhasil disimpan');
+            return to_route('centre-point.index')->with('success','Data berhasil disimpan');
         } else {
-            return to_route('maps')->with('error','Data gagal disimpan');
+            return to_route('centre-point.index')->with('error','Data gagal disimpan');
         }
         
     }
