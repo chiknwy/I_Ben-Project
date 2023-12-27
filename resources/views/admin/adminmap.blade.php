@@ -93,9 +93,9 @@
               <div class="card">
                   <div class="card-header">Add new data spot</div>
                   <div class="card-body">
-                    <form action="{{ route('centre-point.store') }}" method="post">
+                    <form action="{{ route('centre-point.store') }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      <div class="form-group" style="display: none;">
+                      <div class="form-group" style="">
                           <label for="">Koordinat</label>
                           <input type="text" class="form-control @error('coordinate') is-invalid @enderror" name="coordinate" id="coordinate">
                           @error('coordinate')
@@ -148,9 +148,9 @@
 
                       <div class="mb-4">
                           <label class="block text-sm text-black-400">Foto SPBU:</label>
-                          <input type="file" name="gambar" id="gambar"
+                          <input type="file" name="image" id="image"
                               class="w-full px-3 py-2 border rounded-md text-black-400  focus:outline-none  border-black-200"
-                              required>
+                              >
                       </div>
   
                           <div class="form-group">

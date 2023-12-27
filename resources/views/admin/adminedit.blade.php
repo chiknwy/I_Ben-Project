@@ -156,7 +156,21 @@
                             <option value="Not-Available" class="not-available {{ $title->solar == 'Not-Available' ? 'selected' : '' }}">Not Available</option>
                         </select>
                     </div>
-                    
+
+                    <div class="mb-4">
+                        <label class="block text-sm text-blue-400">Current Image:</label>
+                        @if ($title->image)
+                        <img src="{{ asset('images/' . $title->image) }}" alt="Current Book Image"
+                            class="mt-2 max-w-xs">
+                        @else
+                        <p class="text-blue-400">No image available</p>
+                        @endif
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm text-blue-400">New Image:</label>
+                        <input type="file" name="image"
+                        class="w-full px-3 py-2 border rounded-md text-black-400  focus:outline-none  border-black-200" />
+                    </div>
                     
   
                           <div class="form-group">
@@ -222,6 +236,7 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>
         var title = {!! json_encode($title) !!};
+        
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 20,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

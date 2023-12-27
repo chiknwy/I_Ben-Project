@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Titik;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -87,6 +88,23 @@ class HomeController extends Controller
         $titik->pertamax = $request->input('pertamax');
         $titik->pertamax_turbo = $request->input('pertamax_turbo');
         $titik->solar = $request->input('solar');
+
+        if ($request->hasFile('image')) {
+            // Delete the existing image if it exists
+            if ($titik->image) {
+                // ...
+
+                Storage::delete('public/images/' . $titik->image);
+            }
+    
+            // Move the new image to the storage
+            $imageName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('images'), $imageName);
+    
+            // Update the book with the new image name
+            $titik->image = $imageName;
+        }
+
         $titik->save();
 
         return redirect('/adminpage')->with('success', 'Data berhasil diupdate');

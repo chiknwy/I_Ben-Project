@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('titiks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('coordinates');
+            $table->text('coordinate');
             $table->text('longitude');
             $table->text('latitude');
             $table->text('alamat');
-            $table->string('gambar')->nullable();
+            $table->string('image')->nullable();
             $table->string('pertalite');
             $table->string('pertamax');
             $table->string('pertamax_turbo');

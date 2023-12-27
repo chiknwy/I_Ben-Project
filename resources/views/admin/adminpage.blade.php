@@ -173,7 +173,7 @@
                         <tr class="bg-gray-50">
                             <td class="border border-black py-3 px-4 text-lg">{{ $titik->nama }}</td>
                             <td class="border border-black py-3 px-4 text-lg">{{ $titik->alamat  }}</td>
-                            <td class="border border-black py-3 px-4 text-lg"><img src="{{ asset('img/maps/' . $titik->gambar) }}" alt="" width="100px"></td>
+                            <td class="border border-black py-3 px-4 text-lg"><img src="{{ asset('images/' . $titik->image) }}" alt="" width="100px"></td>
                             <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertalite }}</td>
                             <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertamax }}</td>
                             <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertamax_turbo }}</td>
