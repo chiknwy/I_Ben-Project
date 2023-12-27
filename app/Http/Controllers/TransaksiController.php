@@ -10,7 +10,7 @@ class TransaksiController extends Controller
     public function index() {
         $metode = $this->tripay->initChannelPembayaran()->getData()[0]->payment;
        // dd($metode);
-        return view('payment')-> with('metode', $metode);
+        return view('pay')-> with('metode', $metode);
     }
 
     public function process(Request $request){

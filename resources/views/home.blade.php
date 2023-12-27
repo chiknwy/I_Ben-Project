@@ -18,12 +18,10 @@
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
                 <a href="" class="text-black text-lg font-medium">Home</a>
                 <a href="{{url('/maps')}}"><div class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Maps</div></a>
-                <a href="{{url('/pay')}}"><div class="text-indigo-500 text-lg font-medium whitespace-nowrap" >PAY</div></a>
-                <a href="" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Contacts</a>
                 @if (Auth::check())
                   <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
+                    <button type="submit" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Logout</button>
                   </form>
                 @else
                   <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>

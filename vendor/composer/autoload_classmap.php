@@ -43,6 +43,7 @@ return array(
     'App\\Models\\Space' => $baseDir . '/app/Models/Space.php',
     'App\\Models\\Spbu' => $baseDir . '/app/Models/Spbu.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\transaksi' => $baseDir . '/app/Models/transaksi.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
