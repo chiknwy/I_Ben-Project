@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Titik;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -30,9 +32,7 @@ class HomeController extends Controller
     public function user_map(){
         return view('maps');
     }
-    public function admin_map(){
-        return view('adminmap');
-    }
+    
 
     public function pay(){
         return view('pay');
@@ -42,13 +42,39 @@ class HomeController extends Controller
         return view('barcode');
     }
     public function admins()
-    {
-        return view('admins');
+    {   
+        $admin = auth()->user();
+        $users = User::all();
+        if (auth()->check() && $admin->usertype == 1 ) {
+            return view('admin.admins',compact('users'));
+        }
+        else{
+            return redirect()->route('home')->with('error', 'You are not an admin!');
+        }
+    }
+    public function admin_map(){
+        $admin = auth()->user();
+        $users = User::all();
+        if (auth()->check() && $admin->usertype == 1) {
+            return view('admin.adminmap',compact('users'));
+        }
+        else{
+            return redirect()->route('home')->with('error', 'You are not an admin!');
+        }
     }
 
     public function adminpage()
     {
-        return view('adminpage');
+        $titik = Titik::all();
+        $admin = auth()->user();
+        $users = User::all();
+
+        if (auth()->check() && $admin->usertype == 1) {
+            return view('admin.adminpage', compact('titik', 'users'));
+        } else {
+            return redirect()->route('home')->with('error', 'You are not an admin!');
+        }
+        
     }
 
     public function simple_map()
@@ -103,7 +129,7 @@ class HomeController extends Controller
 
     public function spots()
     {
-        $centerPoint = Centre_Point::get()->first();
+        $centerPoint = CentrePoint::get()->first();
         $spot = Spot::get();
 
         return view('frontend.home',[

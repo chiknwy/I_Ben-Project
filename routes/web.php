@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Backend\CentrePointController;
 use App\Http\Controllers\TransaksiController;
 
 use App\Http\Controllers\DataController;
@@ -43,7 +44,7 @@ Route::get('/adminpage', [HomeController::class, 'adminpage']);
 
 
 Route::get('/maps', [HomeController::class, 'user_map'])->name('maps');
-Route::get('/adminmap', [HomeController::class, 'admin_map'])->name('maps');
+Route::get('/adminpage/create', [HomeController::class, 'admin_map'])->name('maps');
 Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 
 
@@ -51,9 +52,8 @@ Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 //     return view('maps');
 // });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+Route::get('/admin', [HomeController::class, 'adminpage']);
+
 
 
 Auth::routes();
@@ -84,6 +84,9 @@ Route::middleware(['auth'])->group(function(){
     
     Route::resource('centre-point',(\App\Http\Controllers\Backend\CentrePointController::class));
     Route::resource('spot',(\App\Http\Controllers\Backend\SpotController::class));
+
+    Route::delete('/adminmap/{id}', [CentrePointController::class, 'destroy']);
+
 });
 
 

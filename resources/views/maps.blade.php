@@ -194,7 +194,7 @@
                     html += '<h5 class="mb-4">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
                     html += '<h5 class="mb-4">Solar: ' + data[index].solar + ' </h5>';
             
-                    html += '<button onclick="redirectToPayment()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto block">Go to Payment</button>';
+                    html += '<a href="{{url('transaction')}}"> <button onclick="redirectToPayment()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto block">Buy Now!!</button></a>';
 
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
                   icon:gasIcon,

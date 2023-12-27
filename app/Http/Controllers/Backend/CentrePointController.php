@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Centre_Point;
+use App\Models\CentrePoint;
 use App\Models\Titik;
 
 use Illuminate\Support\Facades\Storage;
@@ -80,9 +80,9 @@ class CentrePointController extends Controller
         $centerPoint->save();
 
         if ($centerPoint) {
-            return to_route('centre-point.index')->with('success','Data berhasil disimpan');
+            return to_route('maps')->with('success','Data berhasil disimpan');
         } else {
-            return to_route('centre-point.index')->with('error','Data gagal disimpan');
+            return to_route('maps')->with('error','Data gagal disimpan');
         }
         
     }
@@ -98,18 +98,18 @@ class CentrePointController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Centre_Point $centrePoint)
-    {
-        $centrePoint = Centre_Point::findOrFail($centrePoint->id);
-        return view('backend.CentrePoint.edit',['centrePoint' => $centrePoint]);
-    }
+    // public function edit(CentrePoint $centrePoint)
+    // {
+    //     $centrePoint = CentrePoint::findOrFail($centrePoint->id);
+    //     return view('backend.CentrePoint.edit',['centrePoint' => $centrePoint]);
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Centre_Point $centrePoint)
+    public function update(Request $request, CentrePoint $centrePoint)
     {
-        $centrePoint = Centre_Point::findOrFail($centrePoint->id);
+        $centrePoint = CentrePoint::findOrFail($centrePoint->id);
         $centrePoint->coordinates = $request->input('coordinate');
         $centrePoint->update();
 
@@ -125,8 +125,15 @@ class CentrePointController extends Controller
      */
     public function destroy($id)
     {
-        $centrePoint = Centre_Point::findOrFail($id);
+        $centrePoint = Titik::find($id);
         $centrePoint->delete();
         return redirect()->back();
     }
+
+    public function edit($id)
+    {
+        $centrePoint = Titik::find($id);
+        return view ('admin.adminedit',compact('centrePoint'));
+    }
+
 }
