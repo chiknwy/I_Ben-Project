@@ -12,7 +12,6 @@
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script> {{-- Leaflet JavaScript --}}
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
-  <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">
@@ -55,7 +54,7 @@
     
 
     {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]"></div>
+    <div id="map" class="px-10 py-10"></div>
 
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
@@ -159,38 +158,38 @@
             </div>
           </div>
     </footer>
+
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
-const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        
+        var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
+        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 
-var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
-.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-  
-var circle = L.circle([-8.116167984286907, 115.08773688558952], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map).bindPopup('I am a circle.');
+	      var circle = L.circle([-8.116167984286907, 115.08773688558952], {
+		        color: 'red',
+		        fillColor: '#f03',
+		        fillOpacity: 0.5,
+		        radius: 500
+	      }).addTo(map).bindPopup('I am a circle.');
 
 
-var popup = L.popup()
-  .setLatLng([-8.116167984286907, 115.08773688558952, 1])
-  .setContent('I am a standalone popup.')
-  .openOn(map);
+	      var popup = L.popup()
+		      .setLatLng([-8.116167984286907, 115.08773688558952, 1])
+		      .setContent('I am a standalone popup.')
+		      .openOn(map);
 
-function onMapClick(e) {
-  popup
-    .setLatLng(e.latlng)
-    .setContent('You clicked the map at ' + e.latlng.toString())
-    .openOn(map);
-}
-map.on('click', onMapClick);  
+	      function onMapClick(e) {
+	      	popup
+	      		.setLatLng(e.latlng)
+	      		.setContent('You clicked the map at ' + e.latlng.toString())
+	      		.openOn(map);
+	      }
+	      map.on('click', onMapClick);
     </script>
-    
 </body> 
 </html>
