@@ -24,18 +24,18 @@ class Titik extends Model
     {
         return $this->belongsTo(User::class);
     }
-    // public function allData(){
-    //     $result = DB::table('titiks')
-    //         ->select('nama', 'coordinates','latitude', 'longitude' , 'alamat' , 'gambar', 'pertalite', 'pertamax', 'pertamax_turbo', 'solar')
-    //         ->get();
-    //     return $result;
-    // }
+    public function allData(){
+        $result = DB::table('titiks')
+            ->select('nama', 'coordinates','latitude', 'longitude' , 'alamat' , 'gambar', 'pertalite', 'pertamax', 'pertamax_turbo', 'solar')
+            ->get();
+        return $result;
+    }
 
-    // public function getLokasi($id=''){
-    //     $result = DB::table('tbl_lokasi')
-    //         ->select('nama', 'alamat', 'gambar')
-    //         ->where('id', $id)
-    //         ->get();
-    //     return $result;
-    // }
+    public function getLokasi($id=''){
+        $result = DB::table('tbl_lokasi')
+            ->select('nama', 'alamat', 'gambar')
+            ->where('id', $id)
+            ->get();
+        return $result;
+    }
 }

@@ -100,6 +100,36 @@
                                     <label for="">Alamat</label>
                                     <input type="text" class="form-control"  name="alamat" id="alamat">
                                 </div>
+                                <div class="form-group">
+                                  <label for="pertamax">Pertamax</label>
+                                  <select class="form-control" name="pertamax" id="pertamax">
+                                      <option value="Available">Available</option>
+                                      <option value="Not-Available">Not Available</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="pertalite">Pertalite</label>
+                                  <select class="form-control" name="pertalite" id="pertalite">
+                                      <option value="Available">Available</option>
+                                      <option value="Not-Available">Not Available</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="pertamax_turbo">Pertamax Turbo</label>
+                                  <select class="form-control" name="pertamax_turbo" id="pertamax_turbo">
+                                      <option value="Available">Available</option>
+                                      <option value="Not-Available">Not Available</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="solar">Solar</label>
+                                  <select class="form-control" name="solar" id="solar">
+                                      <option value="Available">Available</option>
+                                      <option value="Not-Available">Not Available</option>
+                                  </select>
+
+                              
+
                                 <div class="mb-4">
                                     <label class="block text-sm text-blue-400">Book Image:</label>
                                     <input type="file" name="gambar" id="gambar"

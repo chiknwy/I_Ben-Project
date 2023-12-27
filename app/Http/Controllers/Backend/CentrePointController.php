@@ -80,9 +80,9 @@ class CentrePointController extends Controller
         $centerPoint->save();
 
         if ($centerPoint) {
-            return redirect()->route('centre-point.index')->with('success', 'Data berhasil disimpan');
+            return to_route('centre-point.index')->with('success','Data berhasil disimpan');
         } else {
-            return redirect()->route('centre-point.index')->with('error', 'Data gagal disimpan');
+            return to_route('centre-point.index')->with('error','Data gagal disimpan');
         }
         
     }

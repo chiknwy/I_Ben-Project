@@ -15,6 +15,8 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">  
@@ -160,6 +162,8 @@
             </div>
           </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
@@ -169,18 +173,31 @@
         }).addTo(map);
 
 
-        // var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map);
-  
+         //var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
+        
+         var gasIcon = L.icon({
+            iconUrl: 'img/icon/icongas.png',
+            iconSize:     [34, 38], // size of the icon
+            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+            popupAnchor:  [20, 20] // point from which the popup should open relative to the iconAnchor
+          });
+
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {
               $.each(data, function(index) {
-                // alert(data[index].nama)
+                //alert(data[index].longitude)
                 
-                var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
-                    html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
-                    html+='<img src="data:image/jpg;base64,'+data[index].gambar+'" width="200px" height="200px">'
+                var html = '<h5 class="mb-2">Nama Lokasi: ' + data[index].nama + ' </h5>';
+                    html += '<h5 class="mb-4">Alamat: ' + data[index].alamat + ' </h5>';
+                    html += '<h5 class="mb-4">Pertamax: ' + data[index].pertamax + ' </h5>';
+                    html += '<h5 class="mb-4">Pertalite: ' + data[index].pertalite + ' </h5>';
+                    html += '<h5 class="mb-4">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
+                    html += '<h5 class="mb-4">Solar: ' + data[index].solar + ' </h5>';
+            
+                    html += '<button onclick="redirectToPayment()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto block">Go to Payment</button>';
+
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
-                  // icon:gasIcon, 
+                  icon:gasIcon,
                   title:data[index].nama
                 })
                 .addTo(map)
@@ -188,8 +205,8 @@
                 .openPopup();
 
               })
-            });
-        });
+            });
+        });
 
     </script>
     
