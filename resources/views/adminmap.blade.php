@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/css/map.css"> {{-- CSS untuk ukuran map --}}
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/> {{-- Leaflet CSS --}}
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script> {{-- Leaflet JavaScript --}}
-  <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
-  <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
-  <title>Map</title>
-</head>
+@extends('layouts.dashboard-volt')
+
+@section('css')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+@endsection
 <body class="bg-indigo-900">
       <header class="py-0 md:py-1">
         <div class="px-5">
@@ -52,105 +47,106 @@
         </div>
       </header>
     
-
-    {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]"></div>
-
+    
+    {{-- <div class="grid grid-cols-2 gap-4">
+    Maps Here!
+      <div class="w-5/6 p-4">
+        <div id="map" class="top-[20px]"></div> 
+      </div> --}}
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
-    
-    {{-- Contach here! --}}
-    <div class="bg-indigo-900 py-10">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">Leaflet layer Control</div>
-                        <div class="card-body">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">Titik Koordinat</div>
-                        <div class="card-body">
-                            <form action="{{ route('centre-point.store') }}" method="post">
-                                @csrf
-                                <div class="form-group" style="display: none;">
-                                    <label for="">Koordinat</label>
-                                    <input type="text" class="form-control @error('coordinate') is-invalid @enderror" name="coordinate" id="coordinate">
-                                    @error('coordinate')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Longitude</label>
-                                    <input type="text" class="form-control" required name="longitude" id="longitude">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">latitude</label>
-                                    <input type="text" class="form-control" required name="latitude" id="latitude">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nama</label>
-                                    <input type="text" class="form-control" required name="nama" id="nama">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Alamat</label>
-                                    <input type="text" class="form-control"  name="alamat" id="alamat">
-                                </div>
-                                <div class="form-group">
-                                  <label for="pertamax">Pertamax</label>
-                                  <select class="form-control" name="pertamax" id="pertamax">
-                                      <option value="Available">Available</option>
-                                      <option value="Not-Available">Not Available</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                  <label for="pertalite">Pertalite</label>
-                                  <select class="form-control" name="pertalite" id="pertalite">
-                                      <option value="Available">Available</option>
-                                      <option value="Not-Available">Not Available</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                  <label for="pertamax_turbo">Pertamax Turbo</label>
-                                  <select class="form-control" name="pertamax_turbo" id="pertamax_turbo">
-                                      <option value="Available">Available</option>
-                                      <option value="Not-Available">Not Available</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                  <label for="solar">Solar</label>
-                                  <select class="form-control" name="solar" id="solar">
-                                      <option value="Available">Available</option>
-                                      <option value="Not-Available">Not Available</option>
-                                  </select>
+      
+    {{--CRUD--}}
+    <div class="container mx-auto">
+      <div class="flex justify-center">
+          <div class="w-1/2">
+              <div class="card">
+                  <div class="card-header">Add new Spot</div>
+                  <div class="card-body">
+                      <div id="map" class="mt-4"></div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="w-1/2">
+              <div class="card">
+                  <div class="card-header">Add new data spot</div>
+                  <div class="card-body">
+                    <form action="{{ route('centre-point.store') }}" method="post">
+                      @csrf
+                      <div class="form-group" style="display: none;">
+                          <label for="">Koordinat</label>
+                          <input type="text" class="form-control @error('coordinate') is-invalid @enderror" name="coordinate" id="coordinate">
+                          @error('coordinate')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                      </div>
+                      <div class="form-group">
+                          <label for="">Longitude</label>
+                          <input type="text" class="form-control" required name="longitude" id="longitude">
+                      </div>
+                      <div class="form-group">
+                          <label for="">latitude</label>
+                          <input type="text" class="form-control" required name="latitude" id="latitude">
+                      </div>
+                      <div class="form-group">
+                          <label for="">Nama</label>
+                          <input type="text" class="form-control" required name="nama" id="nama">
+                      </div>
+                      <div class="form-group">
+                          <label for="">Alamat</label>
+                          <input type="text" class="form-control"  name="alamat" id="alamat">
+                      </div>
+                      <div class="form-group">
+                        <label for="pertamax">Pertamax</label>
+                        <select class="form-control" name="pertamax" id="pertamax">
+                            <option value="Available">Available</option>
+                            <option value="Not-Available">Not Available</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="pertalite">Pertalite</label>
+                        <select class="form-control" name="pertalite" id="pertalite">
+                            <option value="Available">Available</option>
+                            <option value="Not-Available">Not Available</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="pertamax_turbo">Pertamax Turbo</label>
+                        <select class="form-control" name="pertamax_turbo" id="pertamax_turbo">
+                            <option value="Available">Available</option>
+                            <option value="Not-Available">Not Available</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="solar">Solar</label>
+                        <select class="form-control" name="solar" id="solar">
+                            <option value="Available">Available</option>
+                            <option value="Not-Available">Not Available</option>
+                        </select>
 
-                              
-
-                                <div class="mb-4">
-                                    <label class="block text-sm text-blue-400">Book Image:</label>
-                                    <input type="file" name="gambar" id="gambar"
-                                        class="w-full px-3 py-2 border rounded-md text-blue-400 bg-gray-900 focus:outline-none focus:border-blue-400 border-blue-200"
-                                        required>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-sm my-2">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                      <div class="mb-4">
+                          <label class="block text-sm text-black-400">Foto SPBU:</label>
+                          <input type="file" name="gambar" id="gambar"
+                              class="w-full px-3 py-2 border rounded-md text-black-400  focus:outline-none  border-black-200"
+                              required>
+                      </div>
+  
+                          <div class="form-group">
+                              <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-600">Simpan</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+    {{-- </div> --}}
 
       
 
-    <footer>
+    {{-- <footer>
         <div class="bg-teal-300 flex flex-col items-stretch px-20 py-12 max-md:px-5">
             <div class="flex justify-between gap-5 ml-3 mr-4 items-start max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
               <div class="flex basis-[0%] flex-col items-start">
@@ -194,7 +190,7 @@
               </div>
             </div>
           </div>
-    </footer>
+    </footer> --}}
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>
@@ -268,4 +264,3 @@
     </script>
     
 </body> 
-</html>

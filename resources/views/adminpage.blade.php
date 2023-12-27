@@ -35,7 +35,7 @@
                 
                 <div class="mb-4 flex justify-end"> <!-- Menambahkan 'flex justify-end' untuk menempatkan elemen ke kanan -->
                     <!-- Tombol untuk Create Data -->
-                    <a href="#" class="px-5 py-2 mt-3 text-xl rounded text-white bg-gray-800 font-semibold border border-purple-200  hover:bg-zinc-800  focus:outline-none">Create Data</a>
+                    <a href="/adminmap" class="px-5 py-2 mt-3 text-xl rounded text-white bg-gray-800 font-semibold border border-purple-200  hover:bg-zinc-800  focus:outline-none">Create Data</a>
                 </div>
 
                 <table class="min-w-full divide-y divide-gray-200" id="myTable">

@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function(){
 Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name('process');
 // Route::resource('space', (SpaceController::class));
 
+
 // Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
 // Route::get('/space/data', [DataController::class, 'space'])->name('data-space');
 
