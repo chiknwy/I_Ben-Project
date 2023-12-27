@@ -14,7 +14,6 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
-  <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">
@@ -26,29 +25,22 @@
             </div>
             <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
-                <a href="{{url('/home')}}" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Home</a>
+                <a href="{{url('/home')}}" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Home</a>
                 <div class="text-black text-lg font-medium">Maps</div>
-                @if (Auth::check())
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Logout</button>
-                  </form>
-                @else
-                  <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
-                      <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
-                    </div>
-                @endif
+                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Contacts</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
+              </form>
               </div>
             </div>
             <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
-              @if (Auth::check())
               <div class="bg-gray-200 flex items-center justify-between gap-5 w-full my-auto pl-5 pr-2 py-2 rounded-xl max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                 <input type="text" class="text-indigo-700 text-lg font-medium grow whitespace-nowrap my-auto w-full bg-transparent outline-none" placeholder="Search" />
                 <div class="bg-teal-300 flex w-1/2 md:w-12 flex-col justify-center items-center h-12 px-3.5 rounded-xl">
                   <img loading="lazy" src="{{url('img/maps/search.svg')}}" class="aspect-square object-contain object-center w-full overflow-hidden" />
                 </div>              
               </div>
-              @endif
             </div>
           </div>
         </div>
@@ -56,7 +48,7 @@
     
 
     {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]"></div>
+    <div id="map" class="top-[20px]">
 
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
@@ -113,8 +105,6 @@
         </div>
       </div>
 
-      
-
     <footer>
         <div class="bg-teal-300 flex flex-col items-stretch px-20 py-12 max-md:px-5">
             <div class="flex justify-between gap-5 ml-3 mr-4 items-start max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
@@ -160,40 +150,65 @@
             </div>
           </div>
     </footer>
+
+
+
+
+
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
-const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+	      // function onMapClick(e) {
+	      // 	popup
+	      // 		.setLatLng(e.latlng)
+	      // 		.setContent('You clicked the map at ' + e.latlng.toString())
+	      // 		.openOn(map);
+	      // }
+	      // map.on('click', onMapClick);
 
 
-var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
-.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-  
-var circle = L.circle([-8.116167984286907, 115.08773688558952], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map).bindPopup('I am a circle.');
 
 
-var popup = L.popup()
-  .setLatLng([-8.116167984286907, 115.08773688558952, 1])
-  .setContent('<a href={{url("/transaction")}}>Pertamina Gajah Mada.</a>')
-  .openOn(map);
 
-function onMapClick(e) {
-  popup
-    .setLatLng(e.latlng)
-    .setContent('You clicked the map at ' + e.latlng.toString())
-    .openOn(map);
-}
-map.on('click', onMapClick);  
+        var gasIcon = L.icon({
+            iconUrl: 'img/icon/icongas.png',
+            iconSize:     [24, 28], // size of the icon
+            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+          });
 
+        var marker = L.marker([-8.116167984286907, 115.08773688558952], {icon:gasIcon}).addTo(map)
+        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+        $( document ).ready(function() {
+            $.getJSON('/titik/json', function(data) {
+              $.each(data, function(index) {
+                // alert(data[index].nama)
+                
+                var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
+                    html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
+                    html+='<img src="img/icon/spbu1.jpg">'
+                L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
+                  icon:gasIcon,
+                  title:data[index].nama
+                })
+                .addTo(map)
+                .bindPopup(html)
+                .openPopup();
+
+              })
+            });
+        });
+        
+
+
+
+        
     </script>
-    
 </body> 
 </html>
