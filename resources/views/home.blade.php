@@ -55,9 +55,11 @@
                     <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
                         <div class="bg-gray-200 flex items-center justify-between gap-5 w-full my-auto pl-5 pr-2 py-2 rounded-xl max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                         <input type="text" class="text-indigo-700 text-lg font-medium grow whitespace-nowrap my-auto w-full bg-transparent outline-none" placeholder="Search" />
+
                         <a href="{{url('/maps')}}"><div class="bg-teal-300 flex w-1/2 md:w-12 flex-col justify-center items-center h-12 px-3.5 rounded-xl">
                             <img loading="lazy" src="{{url('img/maps/search.svg')}}" class="aspect-square object-contain object-center w-full overflow-hidden" />
                         </div>  </a>            
+
                         </div>
                     </div>
                 </div>
@@ -65,7 +67,9 @@
             </div>
             <div class="flex flex-col items-stretch w-2/5 ml-5 max-md:w-full max-md:ml-0">
             <div class="bg-stone-900 flex grow flex-col w-full mt-20 pt-12 pb-6 px-16 rounded-[200px_200px_0px_200px] items-end max-md:max-w-full max-md:mt-10 max-md:px-5">
+
                 <img loading="lazy" src="{{URL('img/Homepage/image-3.png')}}"class="aspect-[0.9] object-contain object-center w-[267px] overflow-hidden max-w-full mt-4" />
+
             </div>
             </div>
         </div>
@@ -168,5 +172,4 @@
 
 </body>
 </html>
-
 
