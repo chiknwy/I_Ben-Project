@@ -46,6 +46,11 @@ class HomeController extends Controller
         return view('admins');
     }
 
+    public function adminpage()
+    {
+        return view('adminpage');
+    }
+
     public function simple_map()
     {
         return view('leaflet.simple-map');

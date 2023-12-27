@@ -34,7 +34,7 @@ Route::get('/maptes', [TitikController::class, 'index']);
 Route::get('/titik/json', [TitikController::class, 'json']);
 
 Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
-
+Route::get('/adminpage', [HomeController::class, 'adminpage']);
 
 
 
