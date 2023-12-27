@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('titik', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('latitude');
-            $table->text('longitude');
+            $table->text('coordinates');
             $table->text('alamat');
             $table->string('gambar');
             $table->timestamps();
