@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centre_Point;
+use App\Models\Spot;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,36 +13,16 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
-    public function index()
-    {
-        return view('home');
-    }
-
-    public function user_map(){
-        return view('maps');
-    }
-    public function admin_map(){
-        return view('adminmap');
-    }
-
-    public function pay(){
-        return view('pay');
-    }
-
-    public function barcode(){
-        return view('barcode');
-    }
     public function admins()
     {
         return view('admins');
@@ -112,4 +94,5 @@ class HomeController extends Controller
         $spot = Spot::where('slug',$slug)->first();
         return view('frontend.detail',['spot' => $spot]);
     }
+    
 }
