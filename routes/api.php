@@ -25,9 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
 });
 
-<<<<<<< HEAD
-Route::post('callback','transaksi@callback') -> name('callback');
-=======
 Route::post('callback','transaksi@callback') -> name('callback');
 
 Route::post('login', [AuthController::class, 'login']);
@@ -43,4 +40,3 @@ Route::apiResource('space', SpaceController::class);
 
 }); 
 
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51

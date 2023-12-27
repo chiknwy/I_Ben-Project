@@ -1,11 +1,7 @@
 <?php
 use App\Http\Controllers\TransaksiController;
 
-<<<<<<< HEAD
-use App\Http\Controllers\TransaksiController;
-=======
 use App\Http\Controllers\DataController;
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\CentrePoint;
@@ -27,14 +23,6 @@ use App\Http\Controllers\TitikController;
 |
 */
 
-<<<<<<< HEAD
-// Route::get('/', function () {
-//    return view('donasi');
-// });
- Route::get('/', [TransaksiController::class, 'index'])->name('index');
-
-Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name('process');
-=======
 Route::get('/', function () {
     return view('home');
 });
@@ -105,5 +93,4 @@ Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name
 
 // Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
 // Route::get('/space/data', [DataController::class, 'space'])->name('data-space');
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
 

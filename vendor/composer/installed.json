@@ -2727,11 +2727,7 @@
             },
             "time": "2022-02-16T01:04:49+00:00",
             "type": "library",
-<<<<<<< HEAD
-            "installation-source": "dist",
-=======
             "installation-source": "source",
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
             "autoload": {
                 "psr-4": {
                     "Tripay\\": "src/"

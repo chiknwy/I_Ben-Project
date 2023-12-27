@@ -21,8 +21,12 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+    'App\\Http\\Controllers\\Backend\\CentrePointController' => $baseDir . '/app/Http/Controllers/Backend/CentrePointController.php',
+    'App\\Http\\Controllers\\Backend\\DataController' => $baseDir . '/app/Http/Controllers/Backend/DataController.php',
+    'App\\Http\\Controllers\\Backend\\SpotController' => $baseDir . '/app/Http/Controllers/Backend/SpotController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\TitikController' => $baseDir . '/app/Http/Controllers/TitikController.php',
     'App\\Http\\Controllers\\TransaksiController' => $baseDir . '/app/Http/Controllers/TransaksiController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -42,6 +46,7 @@ return array(
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
     'App\\Models\\Space' => $baseDir . '/app/Models/Space.php',
     'App\\Models\\Spbu' => $baseDir . '/app/Models/Spbu.php',
+    'App\\Models\\Titik' => $baseDir . '/app/Models/Titik.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\transaksi' => $baseDir . '/app/Models/transaksi.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -50,10 +55,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Providers\\VoltServiceProvider' => $baseDir . '/app/Providers/VoltServiceProvider.php',
-<<<<<<< HEAD
     'App\\View\\Components\\DashboardLayout' => $baseDir . '/app/View/Components/DashboardLayout.php',
-=======
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
