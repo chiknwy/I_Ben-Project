@@ -3,9 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-
-        'reference' => '8d8e45fab0b81cb458a31986ae08d4ea1f17d221',
-
+        'reference' => '2b28c77a79266fb3d915a29b9f1340a7d2b8e1d4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -384,9 +382,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-
-            'reference' => '8d8e45fab0b81cb458a31986ae08d4ea1f17d221',
-
+            'reference' => '2b28c77a79266fb3d915a29b9f1340a7d2b8e1d4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -541,6 +537,15 @@
             'replaced' => array(
                 0 => '^1.0',
             ),
+        ),
+        'muhammadnan/tripay-payment-gateway' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'reference' => '92530e14b0568e8cf5e0a5002e58fce96f56c6ff',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../muhammadnan/tripay-payment-gateway',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.11.1',
