@@ -2702,6 +2702,60 @@
             "install-path": "../monolog/monolog"
         },
         {
+            "name": "muhammadnan/tripay-payment-gateway",
+            "version": "2.0.1",
+            "version_normalized": "2.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftalker/tripay-payment-gateway.git",
+                "reference": "92530e14b0568e8cf5e0a5002e58fce96f56c6ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftalker/tripay-payment-gateway/zipball/92530e14b0568e8cf5e0a5002e58fce96f56c6ff",
+                "reference": "92530e14b0568e8cf5e0a5002e58fce96f56c6ff",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "symfony/http-foundation": "^6.0",
+                "vlucas/phpdotenv": "^5.3"
+            },
+            "require-dev": {
+                "pestphp/pest": "^1.18",
+                "symfony/var-dumper": "^5.1.4"
+            },
+            "time": "2022-02-16T01:04:49+00:00",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Tripay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Adnan",
+                    "email": "naravaya04@gmail.com"
+                },
+                {
+                    "name": "Teguh Rijanandi",
+                    "email": "teguhrijanandi02@gmail.com"
+                }
+            ],
+            "description": "PHP Payment Gateway Tripay Library",
+            "homepage": "https://payment.tripay.co.id",
+            "support": {
+                "issues": "https://github.com/swiftalker/tripay-payment-gateway/issues",
+                "source": "https://github.com/swiftalker/tripay-payment-gateway/tree/2.0.1"
+            },
+            "install-path": "../muhammadnan/tripay-payment-gateway"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.11.1",
             "version_normalized": "1.11.1.0",

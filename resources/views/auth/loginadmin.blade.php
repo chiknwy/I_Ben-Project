@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <title>Login</title>
+    <title>Admin Login</title>
 </head>
 
 <body>
@@ -24,10 +24,10 @@
               <div class="text-indigo-700 text-base font-medium whitespace-nowrap mt-2 self-start max-md:max-w-full">
                 Most Efficient Gasoline Shop
               </div>
-              <form method="POST" action="{{ route('login') }}">
+              <form method="POST" action="{{ route('loginadmin') }}">
                 @csrf
                 <h2 class="text-indigo-700 text-5xl font-bold whitespace-nowrap ml-20 mt-20 self-start max-md:text-4xl max-md:ml-2.5 max-md:mt-10">
-                    Login
+                    Login as Admin
                 </h2>
                 <div class="text-indigo-700 text-base font-medium whitespace-nowrap ml-20 mt-3 self-start max-md:ml-2.5">
                     Enter your account details
@@ -57,7 +57,6 @@
                     <div class="text-indigo-700 text-opacity-90 text-base grow whitespace-nowrap">
                         <div class="mb-4">
                             <label for="password" class="block text-sm font-medium text-gray-600"></label>
-                            
                             <input placeholder="Password" id="password" type="password" name="password" required
                                    class="visibility: hidden; border-none mt-1 p-1 w-full bg-transparent outline-none">
                                    <i class="bi bi-eye-slash inline" id="togglePassword" ></i>
@@ -96,9 +95,9 @@
               </div>
               <div class="text-indigo-500 text-lg font-medium text-base self-center whitespace-nowrap mt-6 max-md:max-w-full">
                 
-                <a  href="{{ route('loginadmin') }}"><br><div 
+                <a href="{{route('login')}}"><br><div 
                   class="text-indigo-500 font-medium">
-                  Login as admin
+                  Login as user
                 </div>
                 </a>
             </div>
