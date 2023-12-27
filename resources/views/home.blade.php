@@ -17,18 +17,23 @@
             <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
                 <a href="" class="text-black text-lg font-medium">Home</a>
-                <a href="{{url('/maps')}}"><div class="text-indigo-700 text-lg font-medium whitespace-nowrap" >Maps</div></a>
-                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Contacts</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button type="submit" class="font-bold text-indigo-500 hover:underline">Logout</button>
-              </form>
+                <a href="{{url('/maps')}}"><div class="text-indigo-500 text-lg font-medium whitespace-nowrap" >Maps</div></a>
+                @if (Auth::check())
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-indigo-500 text-lg font-medium whitespace-nowrap">Logout</button>
+                  </form>
+                @else
+                  <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
+                      <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
+                    </div>
+                @endif
               </div>
             </div>
            
           </div>
         </div>
-      </header>
+    </header>
     
       <div class="bg-teal-300 mt-0 ml-3.5 mr-4 pl-12 pr-20 pt-12 rounded-3xl max-md:max-w-full max-md:mr-2.5 max-md:px-5">
         <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -49,9 +54,11 @@
                     <div class="flex flex-col items-stretch w-[47%] ml-5 max-md:w-full max-md:ml-0">
                         <div class="bg-gray-200 flex items-center justify-between gap-5 w-full my-auto pl-5 pr-2 py-2 rounded-xl max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                         <input type="text" class="text-indigo-700 text-lg font-medium grow whitespace-nowrap my-auto w-full bg-transparent outline-none" placeholder="Search" />
-                        <div class="bg-teal-300 flex w-1/2 md:w-12 flex-col justify-center items-center h-12 px-3.5 rounded-xl">
+
+                        <a href="{{url('/maps')}}"><div class="bg-teal-300 flex w-1/2 md:w-12 flex-col justify-center items-center h-12 px-3.5 rounded-xl">
                             <img loading="lazy" src="{{url('img/maps/search.svg')}}" class="aspect-square object-contain object-center w-full overflow-hidden" />
-                        </div>              
+                        </div>  </a>            
+
                         </div>
                     </div>
                 </div>
@@ -59,7 +66,9 @@
             </div>
             <div class="flex flex-col items-stretch w-2/5 ml-5 max-md:w-full max-md:ml-0">
             <div class="bg-stone-900 flex grow flex-col w-full mt-20 pt-12 pb-6 px-16 rounded-[200px_200px_0px_200px] items-end max-md:max-w-full max-md:mt-10 max-md:px-5">
+
                 <img loading="lazy" src="{{URL('img/Homepage/image-3.png')}}"class="aspect-[0.9] object-contain object-center w-[267px] overflow-hidden max-w-full mt-4" />
+
             </div>
             </div>
         </div>
@@ -101,6 +110,16 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="justify-end items-stretch bg-gray-200 flex w-full flex-col pt-8 px-5 max-md:max-w-full">
+        <h1 class="text-stone-900 text-4xl font-bold self-center whitespace-nowrap">Products</h1>
+        <h2 class="text-indigo-700 text-3xl font-medium self-center whitespace-nowrap mt-3 max-md:max-w-full">Find what you are looking for</h2>
+        <div class="flex-col overflow-hidden relative flex min-h-[843px] w-full justify-center items-center mt-8 px-16 py-12 max-md:max-w-full max-md:px-5">
+          <img loading="lazy" srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/4816bd0a8b0e79222c49c4818cfd6a88a5fcd588087aab410a95363478040ec4?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&"class="absolute h-full w-full object-cover object-center inset-0" />
+          <img loading="lazy" srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/aef82a9a659e4e1cdbb9842a13e6c748322ddaebacbeb9c137b87eafc2118d70?apiKey=202a2f9440ce4307ad5d7fcb6782a3df&"class="aspect-[3.43] object-contain object-center w-[634px] overflow-hidden max-w-full mt-52 mb-64 max-md:my-10" />
+        <br>
         </div>
       </div>
       <footer>
@@ -152,5 +171,4 @@
 
 </body>
 </html>
-
 
