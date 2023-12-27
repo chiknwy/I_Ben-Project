@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\transaksi as transaksiModel;
 use Illuminate\Http\Request;
 
-class transaksi extends Controller
+class TransaksiController extends Controller
 {
-    
+    public function index() {
+        $metode = $this->tripay->initChannelPembayaran()->getData()[0]->payment;
+       // dd($metode);
+        return view('donasi')-> with('metode', $metode);
+    }
 
     public function process(Request $request){
         $nama = $request->nama;
         $email = $request->email;
         $nominal = $request->nominal;
         $nohp = $request->nohp;
+        $metode = $request->metode;
 
         $transaksi = new transaksiModel;
         $transaksi->nama = $nama;
@@ -33,7 +38,7 @@ class transaksi extends Controller
 
         $transaction = $init->closeTransaction(); // define your transaction type, for close transaction use `closeTransaction()`
         $transaction->setPayload([
-            'method'            => 'BNIVA', // IMPORTANT, dont fill by `getMethod()`!, for more code method you can check here https://tripay.co.id/developer
+            'method'            => $metode, // IMPORTANT, dont fill by `getMethod()`!, for more code method you can check here https://tripay.co.id/developer
             'merchant_ref'      => $merchantRef,
             'amount'            => $init->getAmount(),
             'customer_name'     => $transaksi->nama,
@@ -54,8 +59,12 @@ class transaksi extends Controller
         ]); // set your payload, with more examples https://tripay.co.id/developer
 
         $getPayload = $transaction->getPayload();
+        $get_data_from_server = $transaction->getJson();
+        //$transaction->getData()
 
-        return response() -> json($transaction->getData());
+        //return response() -> json($get_data_from_server);
+
+        return redirect($get_data_from_server->data->checkout_url);
        
     }
 

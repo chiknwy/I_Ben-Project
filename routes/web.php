@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('donasi');
-});
+// Route::get('/', function () {
+//    return view('donasi');
+// });
+ Route::get('/', [TransaksiController::class, 'index'])->name('index');
 
-Route::post('transaksi_process', 'transaksi@process')->name('process');
-
+Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name('process');
 

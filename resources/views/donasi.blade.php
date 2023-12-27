@@ -35,7 +35,19 @@
                           <label for="nominal">Nominal :</label>
                           <input type="number" required name="nominal" class="form-control" id="nominal">
                         </div>
+                      
+                        <b>metode pembayaram</b>
+                      @foreach($metode as $m)
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" value ={{$m->code}}  name="optradio">{{$m->name}}
+                          </label>
+                      </div>
+                      @endforeach
+
                         
+
+
                         <button type="submit" class="btn btn-success">Simpan</button>
                     </form>        
                 </div>
