@@ -25,7 +25,7 @@
             </div>
             <div class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0">
               <div class="items-stretch flex justify-between gap-5 my-auto max-md:justify-center max-md:mt-10">
-                <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Home</a>
+                <a href="{{url('/home')}}" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Home</a>
                 <div class="text-black text-lg font-medium">Maps</div>
                 <a href="" class="text-indigo-700 text-lg font-medium whitespace-nowrap">Contacts</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">

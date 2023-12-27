@@ -46,9 +46,12 @@ Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
 
 
 
+
 Auth::routes();
 
 Route::resource('centre-point', (CentrePoint::class));
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Route::resource('space', (SpaceController::class));
 
 // Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
