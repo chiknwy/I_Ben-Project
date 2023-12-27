@@ -32,6 +32,9 @@ Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 //     return view('maps');
 // });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -39,6 +42,7 @@ Auth::routes();
 
 Route::resource('centre-point', (CentrePoint::class));
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // Route::resource('space', (SpaceController::class));
 
