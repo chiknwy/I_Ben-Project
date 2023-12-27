@@ -190,6 +190,7 @@
                 var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
                     html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
                     html+='<img src="img/icon/spbu1.jpg">'
+                    html += '<button onclick="redirectToPayment()">Go to Payment</button>'
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
                   icon:gasIcon,
                   title:data[index].nama
