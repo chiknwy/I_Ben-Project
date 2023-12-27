@@ -162,18 +162,14 @@
           maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-	      var popup = L.popup()
-		      .setLatLng([-8.116167984286907, 115.08773688558952])
-		      .setContent('I am a standalone popup.')
-		      .openOn(map);
 
-	      function onMapClick(e) {
-	      	popup
-	      		.setLatLng(e.latlng)
-	      		.setContent('You clicked the map at ' + e.latlng.toString())
-	      		.openOn(map);
-	      }
-	      map.on('click', onMapClick);
+	      // function onMapClick(e) {
+	      // 	popup
+	      // 		.setLatLng(e.latlng)
+	      // 		.setContent('You clicked the map at ' + e.latlng.toString())
+	      // 		.openOn(map);
+	      // }
+	      // map.on('click', onMapClick);
 
 
 
@@ -182,8 +178,7 @@
         var gasIcon = L.icon({
             iconUrl: 'img/icon/icongas.png',
             iconSize:     [24, 28], // size of the icon
-            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
+            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
           });
 
@@ -191,13 +186,29 @@
         .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 
         $( document ).ready(function() {
-            $.getJson('/titik/json', function(data) {
-              alert(data);
+            $.getJSON('/titik/json', function(data) {
+              $.each(data, function(index) {
+                // alert(data[index].nama)
+                
+                var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
+                    html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
+                    html+='<img src="img/icon/spbu1.jpg">'
+                L.marker([parseFloat(data[index].longitude), parseFloat(data[index].latitude)], {
+                  icon:gasIcon,
+                  title:data[index].nama
+                })
+                .addTo(map)
+                .bindPopup(html)
+                .openPopup();
+
+              })
             });
-            
-
-
         });
+        
+
+
+
+        
     </script>
 </body> 
 </html>

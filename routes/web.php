@@ -31,6 +31,15 @@ Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 Route::get('/maptes', [TitikController::class, 'index']);
 Route::get('/titik/json', [TitikController::class, 'json']);
 
+Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
+
+
+
+
+
+
+
+
 // Route::get('/maps', function () {
 //     return view('maps');
 // });
