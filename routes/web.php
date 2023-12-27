@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\TransaksiController;
 
 use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
@@ -34,15 +35,20 @@ Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 //     return view('maps');
 // });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Auth::routes();
 
 Route::resource('centre-point', (CentrePoint::class));
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/transaction', [TransaksiController::class, 'index'])->name('index');
+
+Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name('process');
 // Route::resource('space', (SpaceController::class));
 
 // Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
