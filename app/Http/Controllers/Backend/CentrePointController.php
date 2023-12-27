@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Centre_Point;
+use App\Models\Titik;
+
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
 
 class CentrePointController extends Controller
 {
@@ -32,11 +39,44 @@ class CentrePointController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'coordinate' => 'required'
+            // 'coordinates' => 'required|max:255', 
+            // 'longitude' => 'required|max:255',
+            // 'latitude' => 'required|max:255',
+            // 'nama' => 'required|max:255',
+            // 'alamat' => 'required|max:255',
+            // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'pertalite' => 'required|max:255',
+            // 'pertamax' => 'required|max:255',
+            // 'pertamax_turbo' => 'required|max:255',
+            // 'solar' => 'required|max:255',
         ]);
 
-        $centerPoint = new Centre_Point;
+        $centerPoint = new Titik($request->all());
         $centerPoint->coordinates = $request->input('coordinate');
+        $centerPoint->longitude = $request->input('longitude');
+        $centerPoint->latitude = $request->input('latitude');
+        $centerPoint->nama = $request->input('nama');
+        $centerPoint->alamat = $request->input('alamat');
+        $centerPoint->gambar = $request->input('gambar');
+        $centerPoint->pertalite = $request->input('pertalite');
+        $centerPoint->pertamax = $request->input('pertamax');
+        $centerPoint->pertamax_turbo = $request->input('pertamax_turbo');
+        $centerPoint->solar = $request->input('solar');
+        // $centerPoint->user_id = auth()->user()->id;
+
+        if ($request->hasFile('gambar')) {
+            $imageName = time().'.'.$request->gambar->extension() ;  
+            $centerPoint->gambar->move(public_path('uploads'), $imageName);
+            $centerPoint->gambar = $imageName;
+        }
+        // $imageName = time().'.'.$request->gambar->extension() ;  
+        // $centerPoint->gambar->move(public_path('uploads'), $imageName);
+
+        // $validate['gambar'] = $imageName;
+
+        // $centerPoint->gambar = $imageName;
+
+        
         $centerPoint->save();
 
         if ($centerPoint) {
@@ -44,6 +84,7 @@ class CentrePointController extends Controller
         } else {
             return to_route('centre-point.index')->with('error','Data gagal disimpan');
         }
+        
     }
 
     /**

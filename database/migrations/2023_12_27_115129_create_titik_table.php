@@ -11,12 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('titik', function (Blueprint $table) {
+        Schema::create('titiks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->text('coordinates');
+<<<<<<< HEAD
+=======
+            $table->text('longitude');
+            $table->text('latitude');
+>>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
             $table->text('alamat');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
+            $table->string('pertalite');
+            $table->string('pertamax');
+            $table->string('pertamax_turbo');
+            $table->string('solar');
             $table->timestamps();
         });
     }
