@@ -17,7 +17,7 @@
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <title>Map</title>
 </head>
-<body class="bg-indigo-900">
+<body class="bg-indigo-900">  
       <header class="py-0 md:py-1">
         <div class="px-5">
           <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -163,35 +163,33 @@
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
-const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
 
 
-var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
-.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+        // var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map);
   
-var circle = L.circle([-8.116167984286907, 115.08773688558952], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map).bindPopup('I am a circle.');
+        $( document ).ready(function() {
+            $.getJSON('/titik/json', function(data) {
+              $.each(data, function(index) {
+                // alert(data[index].nama)
+                
+                var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
+                    html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
+                    html+='<img src="data:image/jpg;base64,'+data[index].gambar+'" width="200px" height="200px">'
+                L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
+                  // icon:gasIcon, 
+                  title:data[index].nama
+                })
+                .addTo(map)
+                .bindPopup(html)
+                .openPopup();
 
-
-var popup = L.popup()
-  .setLatLng([-8.116167984286907, 115.08773688558952, 1])
-  .setContent('<a href={{url("/transaction")}}>Pertamina Gajah Mada.</a>')
-  .openOn(map);
-
-function onMapClick(e) {
-  popup
-    .setLatLng(e.latlng)
-    .setContent('You clicked the map at ' + e.latlng.toString())
-    .openOn(map);
-}
-map.on('click', onMapClick);  
+              })
+            });
+        });
 
     </script>
     

@@ -11,13 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('titik', function (Blueprint $table) {
+        Schema::create('titiks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('latitude');
+            $table->text('coordinates');
             $table->text('longitude');
+            $table->text('latitude');
             $table->text('alamat');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
+            $table->string('pertalite');
+            $table->string('pertamax');
+            $table->string('pertamax_turbo');
+            $table->string('solar');
             $table->timestamps();
         });
     }

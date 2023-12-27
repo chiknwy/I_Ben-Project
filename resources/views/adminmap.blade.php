@@ -77,27 +77,36 @@
                         <div class="card-body">
                             <form action="{{ route('centre-point.store') }}" method="post">
                                 @csrf
-                                 
-                                <div class="form-group">
-                                    <label for="">Latitude</label>
-                                    <input type="text" class="form-control" name="latitude" id="latitude">
+                                <div class="form-group" style="display: none;">
+                                    <label for="">Koordinat</label>
+                                    <input type="text" class="form-control @error('coordinate') is-invalid @enderror" name="coordinate" id="coordinate">
+                                    @error('coordinate')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Longitude</label>
-                                    <input type="text" class="form-control" name="longitude" id="longitude">
+                                    <input type="text" class="form-control" required name="longitude" id="longitude">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">latitude</label>
+                                    <input type="text" class="form-control" required name="latitude" id="latitude">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="nama">
+                                    <input type="text" class="form-control" required name="nama" id="nama">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat">
+                                    <input type="text" class="form-control"  name="alamat" id="alamat">
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Gambar</label>
-                                    <input type="file" class="form-control" name="gambar" id="gambar">
+                                <div class="mb-4">
+                                    <label class="block text-sm text-blue-400">Book Image:</label>
+                                    <input type="file" name="gambar" id="gambar"
+                                        class="w-full px-3 py-2 border rounded-md text-blue-400 bg-gray-900 focus:outline-none focus:border-blue-400 border-blue-200"
+                                        required>
                                 </div>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-sm my-2">Simpan</button>
                                 </div>
