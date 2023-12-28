@@ -17,6 +17,10 @@
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
+  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">  
@@ -154,10 +158,18 @@
             </div>
           </div>
     </footer>
+
+    @if(session('error'))
+    <script>alert('{{ session('error') }}');</script>
+@endif
+@if(session('success'))
+    <script>alert('{{ session('success') }}');</script>
+@endif
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
     <script>
-      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
+
+      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 5);
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
@@ -177,16 +189,24 @@
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {
               $.each(data, function(index) {
-                //alert(data[index].longitude)
-                
-                var html = '<h5 class="mb-2">Nama Lokasi: ' + data[index].nama + ' </h5>';
-                    html += '<h5 class="mb-4">Alamat: ' + data[index].alamat + ' </h5>';
-                    html += '<h5 class="mb-4">Pertamax: ' + data[index].pertamax + ' </h5>';
-                    html += '<h5 class="mb-4">Pertalite: ' + data[index].pertalite + ' </h5>';
-                    html += '<h5 class="mb-4">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
-                    html += '<h5 class="mb-4">Solar: ' + data[index].solar + ' </h5>';
+                //alert(data[index].image)
+                var image = data[index].image;
+                var html = '<div class="bg-indigo-700 border-2 border-teal-600 p-3 max-w-md mx-auto shadow-lg rounded-md">';
+                    html += '<h5 class="mb-1 text-lg font-semibold text-white">Nama Lokasi: ' + data[index].nama + ' </h5>';
+                    html += '<h5 class="mb-2 text-sm text-gray-800">Alamat: ' + data[index].alamat + ' </h5>';
+                    html += '<h5 class="mb-2 text-sm text-blue-200">Pertamax: ' + data[index].pertamax + ' </h5>';
+                    html += '<h5 class="mb-2 text-sm text-green-200">Pertalite: ' + data[index].pertalite + ' </h5>';
+                    html += '<h5 class="mb-2 text-sm text-yellow-200">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
+                    html += '<h5 class="mb-2 text-sm text-red-200">Solar: ' + data[index].solar + ' </h5>';
+                    html += '<img class="max-w-full mt-2 rounded-md" src="images/' + data[index].image + '">';
+                    html += '<a href="{{url('transaction')}}"><button onclick="redirectToPayment()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-1 px-2 rounded-full block mt-2">Buy Now</button></a>';
+                    html += '</div>';
+
+
+
+
+
             
-                    html += '<button onclick="redirectToPayment()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto block">Go to Payment</button>';
 
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
                   icon:gasIcon,
@@ -194,11 +214,21 @@
                 })
                 .addTo(map)
                 .bindPopup(html)
-                .openPopup();
+                // .openPopup();
 
               })
             });
         });
+        var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+
+        var results = new L.LayerGroup().addTo(map);
+
+          searchControl.on('results', function(data){
+            results.clearLayers();
+            for (var i = data.results.length - 1; i >= 0; i--) {
+              results.addLayer(L.marker(data.results[i].latlng));
+            }
+          });
 
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {

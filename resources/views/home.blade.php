@@ -9,6 +9,7 @@
 </head>
 <body class="bg-indigo-900">
     <header class="py-0 md:py-1">
+      
         <div class="px-5">
           <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div class="flex flex-col items-stretch w-[24%] max-md:w-full max-md:ml-0">
@@ -28,11 +29,19 @@
                       <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
                     </div>
                 @endif
-              </div>
+                @if (Auth::check() && Auth::user()->usertype == 1)
+                <div class="justify-end w-11 h-11 flex ">
+                  <a  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg" href="{{url ('/adminpage')}}">
+                    <button >Adminpage</button>
+                  </a>
+                </div>
+              @endif
             </div>
-           
+             
+              
+            </div>
           </div>
-        </div>
+        
     </header>
     
       <div class="bg-teal-300 mt-0 ml-3.5 mr-4 pl-12 pr-20 pt-12 rounded-3xl max-md:max-w-full max-md:mr-2.5 max-md:px-5">
@@ -168,7 +177,9 @@
             <div class="text-indigo-700 text-lg font-medium whitespace-nowrap ml-3 mr-4 mt-24 max-md:max-w-full max-md:mr-2.5 max-md:mt-10">2023 all Right Reserved Term of use I-Ben</div>
           </div>
     </footer>
-
+    @if(session('error'))
+    <script>alert('{{ session('error') }}');</script>
+@endif
 </body>
 </html>
 

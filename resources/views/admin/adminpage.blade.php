@@ -10,6 +10,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>adminpage</title>
+    <style>
+        div.dataTables_wrapper div.dataTables_filter input {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            color: #000000;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 4px;
+            outline: none;
+        }
+
+        #myTable_paginate {
+            margin-top: 10px;
+        }
+
+        #myTable_previous,
+        #myTable_next {
+            background-color: rgb(249 250 251);
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        #myTable_previous:hover,
+        #myTable_next:hover {
+            background-color: #333;
+        }
+
+        #myTable_paginate .paginate_button:not(:last-child),
+        #myTable_paginate .paginate_button:last-child {
+            margin-right: 10px;
+        }
+
+        #myTable {
+            border: 1px solid black;
+        }
+
+        #myTable tbody {
+            background-color: rgba(14, 15, 25, 0.433);
+        }
+        *::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,9 +76,11 @@
     <section class="flex">
         <!-- Sidebar -->
         <aside class="bg-indigo-900 px-3 text-gray-300 w-1/10 min-h-screen">
+           <a href="{{url ('/home')}}">
             <div class="flex flex-col items-stretch w-[50%] max-md:w-full max-md:ml-0">
                 <img loading="lazy" src="{{URL('img/maps/iben-4-removebg-preview-5.png')}}" class="aspect-[1.33] object-contain object-center w-full overflow-hidden shrink-0 max-w-full grow max-md:mt-10" />
             </div>
+        </a>
             
         </aside>
 
@@ -35,10 +96,10 @@
                 
                 <div class="mb-4 flex justify-end"> <!-- Menambahkan 'flex justify-end' untuk menempatkan elemen ke kanan -->
                     <!-- Tombol untuk Create Data -->
-                    <a href="#" class="px-5 py-2 mt-3 text-xl rounded text-white bg-gray-800 font-semibold border border-purple-200  hover:bg-zinc-800  focus:outline-none">Create Data</a>
+                    <a href="{{url('/adminpage/create')}}" class="px-5 py-2 mt-3 text-xl rounded text-white bg-gray-800 font-semibold border border-purple-200  hover:bg-zinc-800  focus:outline-none">Create Data</a>
                 </div>
 
-                <table class="min-w-full divide-y divide-gray-200" id="myTable">
+                {{-- <table class="min-w-full divide-y divide-gray-200" id="myTable1">
                     <div class="text-gray-500">
                         Show <select class="px-2 py-1 border rounded">
                             <option>10</option>
@@ -88,6 +149,76 @@
                     </tbody>
                    
                     
+                </table> --}}
+
+                <table id="myTable" class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr class="bg-gray-50">
+                            <th class="border border-black py-2 px-3">Name</th>
+                            <th class="border border-black py-2 px-3">Lokasi</th>
+                            <th class="border border-black py-2 px-3">Gambar</th>
+                            <th class="border border-black py-2 px-3">Pertalite</th>
+                            <th class="border border-black py-2 px-3">Pertamax</th>
+                            <th class="border border-black py-2 px-3">Pertamax Turbo</th>
+                            <th class="border border-black py-2 px-3">Solar</th>
+                            <th class="border border-black py-2 px-3">Action</th>
+
+
+                           
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($titik as $titik)
+                        <tr class="bg-gray-50">
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->nama }}</td>
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->alamat  }}</td>
+                            <td class="border border-black py-3 px-4 text-lg"><img src="{{ asset('images/' . $titik->image) }}" alt="" width="100px"></td>
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertalite }}</td>
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertamax }}</td>
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->pertamax_turbo }}</td>
+                            <td class="border border-black py-3 px-4 text-lg">{{ $titik->solar }}</td>
+                            <td class="border border-black py-3 px-4">
+                                
+                                    
+                                    <a href="{{ url('/adminmap/' . $titik->id . '/edit') }}" class="text-blue-400" >Edit</a>
+                                    <form method="post" action="{{ url('/adminmap/' . $titik->id) }}" onsubmit="return confirmAndAlert('Are you sure you want to delete this Data?', 'Deleted')">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="text-red-400">Delete</button>
+                                    </form>
+                                    
+                                    
+                           
+                            
+                            {{-- <td class="border border-black py-3 px-4">
+                                @if (Auth::check())
+        
+                                    @if (Auth::user()->admin == 1 || Auth::user()->id == $book->user_id || Auth::user()->admin == 2)
+                                        
+                                    
+                                    <a href="{{ url('/books/' . $book->id . '/edit') }}" class="text-blue-400" >Edit</a>
+                                    <form method="post" action="{{ url('/books/' . $book->id) }}" onsubmit="return confirmAndAlert('Are you sure you want to delete this book?', 'Deleted')">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="text-red-400">Delete</button>
+                                    </form>
+                                    @else
+                                    <span class="text-red-500">You're not the manager of the books! Cannot edit nor delete!</span>
+                                    @endif
+                                @else
+                                <span class="text-red-500">You're not logged in! Cannot edit nor delete!</span>
+                                @endif
+                            </td> --}}
+                            
+                            
+                        </tr>
+                        @empty
+                        <tr class="bg-gray-50">
+                            <td colspan="6" class="border border-black py-3 px-4 text-lg">No books available</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
                 </table>
             </div>
             
@@ -154,9 +285,54 @@
           </div>
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = '{{ session('success') }}';
+        var action = '{{ session('action') }}';
+
+        if (successMessage && action) {
+            alert(successMessage);
+
+            // You can customize the alert message based on the action
+            // if (action === 'create') {
+            //     alert('New book created!');
+            // } else if (action === 'edit') {
+            //     alert('Book updated!');
+            // }
+        }
+        });
+            function showAlert(action) {
+                alert(action );
+            }
+
+            function confirmAndAlert(message, action) {
+                var confirmed = confirm(message);
+                if (confirmed) {
+                    showAlert(action);
+                }
+                return confirmed;
+            }
+
+            $(document).ready(function () {
+                let table = $('#myTable').DataTable({
+                    "lengthMenu": [5, 10, 15, 20, 25, 50, 75, 100],
+                    "ordering": true,
+                    "searching": true,
+                    "info": true,
+                    "paging": true,
+                    "responsive": true,
+                    "columnDefs": [
+                        { "orderable": false, "targets": [6] }
+                    ],
+                });
+            });
+    </script>
 
 </html>
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Kode sebelumnya untuk search...
         
@@ -218,4 +394,4 @@
         showPage(currentPage);
         renderPagination();
     });
-</script>
+</script> --}}

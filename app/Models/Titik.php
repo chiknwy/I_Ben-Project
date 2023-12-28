@@ -11,14 +11,14 @@ class Titik extends Model
     protected $fillable = [
         'nama',
         'alamat',
-        'gambar',
+        'image',
         'pertalite',
         'pertamax',
         'pertamax_turbo',
         'solar',
         'latitude',
         'longitude',
-        'coordinates'
+        'coordinate'
     ];
     public function user()
     {
@@ -26,14 +26,14 @@ class Titik extends Model
     }
     public function allData(){
         $result = DB::table('titiks')
-            ->select('nama', 'coordinates','latitude', 'longitude' , 'alamat' , 'gambar', 'pertalite', 'pertamax', 'pertamax_turbo', 'solar')
+            ->select('nama', 'coordinate','latitude', 'longitude' , 'alamat' , 'image', 'pertalite', 'pertamax', 'pertamax_turbo', 'solar')
             ->get();
         return $result;
     }
 
     public function getLokasi($id=''){
         $result = DB::table('tbl_lokasi')
-            ->select('nama', 'alamat', 'gambar')
+            ->select('nama', 'alamat', 'image')
             ->where('id', $id)
             ->get();
         return $result;
