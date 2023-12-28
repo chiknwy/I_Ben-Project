@@ -16,6 +16,7 @@ class TransaksiController extends Controller
     public function process(Request $request){
         $nama = $request->nama;
         $email = $request->email;
+        $bensin = $request->bensin;
         $nominal = $request->nominal;
         $nohp = $request->nohp;
         $metode = $request->metode;
@@ -23,9 +24,10 @@ class TransaksiController extends Controller
         $transaksi = new transaksiModel;
         $transaksi->nama = $nama;
         $transaksi->email= $email;
+        $transaksi->bensin= $bensin;
         $transaksi->nominal = $nominal;
         $transaksi->nohp = $nohp;
-        $transaksi->invoice = "IBEN_" . rand(20,200);
+        $transaksi->invoice = "IBEN_" . rand(20,200) . "_". time();
         $transaksi->save();
 
         $merchantRef = $transaksi->invoice;
@@ -47,13 +49,13 @@ class TransaksiController extends Controller
             'order_items'       => [
                 [
                     'sku'       => 'IBEN',
-                    'name'      => 'BENSIN',
+                    'name'      => $transaksi->bensin,
                     'price'     => $init->getAmount(),
                     'quantity'  => 1
                 ]
             ],
-            'callback_url'      => 'https://domainanda.com/callback',
-            'return_url'        => 'https://domainanda.com/redirect',
+            'callback_url'      => 'http://127.0.0.1:8000/callback',
+            'return_url'        => 'http://127.0.0.1:8000/redirect',
             'expired_time'      => (time()+(24*60*60)), // 24 jam
             'signature'         => $init->createSignature()
         ]); // set your payload, with more examples https://tripay.co.id/developer

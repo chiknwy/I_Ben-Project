@@ -62,6 +62,13 @@
             <label for="nohp">No Hp :</label>
             <input type="text" required name="nohp" class="form-control" id="nohp" value="{{ Auth::user()->phone }}" >
           </div>
+
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="bensin">
+            <option selected>Open this select menu</option>
+            <option value="PERTALITE">PERTALITE</option>
+            <option value="PERTAMAX">PERTAMAX</option>
+            <option value="SOLAR">SOLAR</option>
+          </select>
           
           <div class="form-group">
             <label for="nominal">Nominal :</label>
