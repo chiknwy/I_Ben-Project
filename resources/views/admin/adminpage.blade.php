@@ -222,7 +222,7 @@
                 </table>
             </div>
             
-            <div class="flex justify-between items-center mt-4">
+            {{-- <div class="flex justify-between items-center mt-4">
                 <!-- Informasi Showing -->
                 <div class="text-gray-500">
                     Showing 1 to 1 of <span class="font-semibold">entries 1</span>
@@ -235,7 +235,7 @@
                     <button class="px-3 py-1 bg-blue-500 text-white rounded">Previous</button>
                     <button class="px-3 py-1 bg-blue-500 text-white rounded">Next</button>
                 </div>
-            </div>
+            </div> --}}
             
         </main>
     </section>

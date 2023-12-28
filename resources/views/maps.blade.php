@@ -190,8 +190,8 @@
          var gasIcon = L.icon({
             iconUrl: 'img/icon/icongas.png',
             iconSize:     [34, 38], // size of the icon
-            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-            popupAnchor:  [20, 20] // point from which the popup should open relative to the iconAnchor
+            iconAnchor:   [22, 35], // point of the icon which will correspond to marker's location
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
           });
 
         $( document ).ready(function() {
@@ -200,7 +200,7 @@
                 //alert(data[index].image)
                 var image = data[index].image;
                 var html = '<div class="bg-indigo-700 border-2 border-teal-600 p-3 max-w-md mx-auto shadow-lg rounded-md">';
-                    html += '<h5 class="mb-1 text-lg font-semibold text-white">Nama Lokasi: ' + data[index].nama + ' </h5>';
+                    html += '<h5 class="mb-1 text-lg font-semibold text-white">Lokasi SPBU: ' + data[index].nama + ' </h5>';
                     html += '<h5 class="mb-2 text-sm text-gray-800">Alamat: ' + data[index].alamat + ' </h5>';
                     html += '<h5 class="mb-2 text-sm text-blue-200">Pertamax: ' + data[index].pertamax + ' </h5>';
                     html += '<h5 class="mb-2 text-sm text-green-200">Pertalite: ' + data[index].pertalite + ' </h5>';
