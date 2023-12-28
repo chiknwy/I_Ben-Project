@@ -14,12 +14,9 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
-<<<<<<< HEAD
-=======
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
   <title>Map</title>
 </head>
 <body class="bg-indigo-900">  
@@ -55,6 +52,7 @@
 
     {{-- Maps Here! --}}
     <div id="map" class="top-[20px]">
+    </div>
 
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
@@ -156,35 +154,13 @@
             </div>
           </div>
     </footer>
-<<<<<<< HEAD
-
-
-
-
-
-=======
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
     <script>
       	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 13);
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
-<<<<<<< HEAD
-           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-	      // function onMapClick(e) {
-	      // 	popup
-	      // 		.setLatLng(e.latlng)
-	      // 		.setContent('You clicked the map at ' + e.latlng.toString())
-	      // 		.openOn(map);
-	      // }
-	      // map.on('click', onMapClick);
-
-
-=======
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
@@ -197,7 +173,6 @@
             iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [20, 20] // point from which the popup should open relative to the iconAnchor
           });
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
 
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {
@@ -213,15 +188,6 @@
             
                     html += '<button onclick="redirectToPayment()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto block">Go to Payment</button>';
 
-<<<<<<< HEAD
-
-        var gasIcon = L.icon({
-            iconUrl: 'img/icon/icongas.png',
-            iconSize:     [24, 28], // size of the icon
-            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-          });
-=======
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
                   icon:gasIcon,
                   title:data[index].nama
@@ -233,7 +199,6 @@
               })
             });
         });
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
 
         $( document ).ready(function() {
             $.getJSON('/titik/json', function(data) {
