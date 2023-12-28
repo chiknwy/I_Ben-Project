@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TitikModel;
+use App\Models\Titik;
 
 class TitikController extends Controller
 {
     protected $titikModel;
 
-    public function __construct(TitikModel $titikModel)
+    public function __construct(Titik $titikModel)
     {
         $this->titikModel = $titikModel;
     }

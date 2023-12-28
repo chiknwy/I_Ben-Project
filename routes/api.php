@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+    
 });
+
+Route::post('callback','transaksi@callback') -> name('callback');
 
 Route::post('login', [AuthController::class, 'login']);
 

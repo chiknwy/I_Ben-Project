@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Backend\CentrePointController;
 use App\Http\Controllers\TransaksiController;
 
 use App\Http\Controllers\DataController;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\SpaceController;
 use App\Http\Controllers\TitikController;
+
 
 
 /*
@@ -34,7 +36,7 @@ Route::get('/maptes', [TitikController::class, 'index']);
 Route::get('/titik/json', [TitikController::class, 'json']);
 
 Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
-
+Route::get('/adminpage', [HomeController::class, 'adminpage']);
 
 
 
@@ -43,7 +45,6 @@ Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
 
 
 Route::get('/maps', [HomeController::class, 'user_map'])->name('maps');
-Route::get('/adminmap', [HomeController::class, 'admin_map'])->name('maps');
 Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 
 
@@ -51,9 +52,8 @@ Route::get('/barcode', [HomeController::class, 'barcode'])->name('barcode');
 //     return view('maps');
 // });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+Route::get('/admin', [HomeController::class, 'adminpage']);
+
 
 
 Auth::routes();
@@ -63,6 +63,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/transaction', [TransaksiController::class, 'index'])->name('index');
+    Route::get('/adminpage/create', [HomeController::class, 'admin_map'])->name('maps');
+    Route::get('/adminmap/{id}/edit', [HomeController::class, 'admin_edit'])->name('edit');
+    Route::put('/adminmap/{id}', [HomeController::class, 'update'])->name('update');
 });
 
 Route::middleware(['auth'])->group(function(){
@@ -84,11 +87,15 @@ Route::middleware(['auth'])->group(function(){
     
     Route::resource('centre-point',(\App\Http\Controllers\Backend\CentrePointController::class));
     Route::resource('spot',(\App\Http\Controllers\Backend\SpotController::class));
+
+    Route::delete('/adminmap/{id}', [CentrePointController::class, 'destroy']);
+
 });
 
 
 Route::post('/transaksi_process', [TransaksiController::class, 'process'])->name('process');
 // Route::resource('space', (SpaceController::class));
+
 
 // Route::get('/centrepoint/data', [DataController::class, 'centrepoint'])->name('centre-point.data');
 // Route::get('/space/data', [DataController::class, 'space'])->name('data-space');

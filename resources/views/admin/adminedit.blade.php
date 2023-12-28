@@ -1,3 +1,27 @@
+@extends('layouts.dashboard-volt')
+
+@section('css')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        
+
+    <style>
+        #map {
+            height: 400px;
+        }
+        .leaflet-container{
+          height: 500px;
+        }
+        .available {
+            color: green;
+        }
+
+        .not-available {
+            color: red;
+        }
+
+    </style>
+@endsection
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,66 +76,118 @@
         </div>
       </header>
     
-
-    {{-- Maps Here! --}}
-    <div id="map" class="top-[20px]"></div>
-
+    
+    {{-- <div class="grid grid-cols-2 gap-4">
+    Maps Here!
+      <div class="w-5/6 p-4">
+        <div id="map" class="top-[20px]"></div> 
+      </div> --}}
         {{--  <img class=" " src="https://via.placeholder.com/1440x843" /> --}}
 
-    
-    {{-- Contach here! --}}
-    <div class="bg-indigo-900 py-10">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">Leaflet layer Control</div>
-                        <div class="card-body">
-                            <div id="map"></div>
-                        </div>
+      
+    {{--CRUD--}}
+    <div class="container mx-auto">
+      <div class="flex justify-center">
+          <div class="w-1/2">
+              <div class="card">
+                  <div class="card-header">Add new Spot</div>
+                  <div class="card-body">
+                      <div id="map" ></div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="w-1/2">
+              <div class="card">
+                  <div class="card-header">Add new data spot</div>
+                  <div class="card-body">
+                    <form  method="post"  action="{{ url('/adminmap/' . $title->id) }}"enctype="multipart/form-data" onsubmit="return confirmAndAlert('Are you sure you want to update this Data?', 'Updated')">
+                      @csrf
+                      @method('put')
+
+                      <div class="form-group" style="display: none;">
+                          <label for="">Koordinat</label>
+                          <input type="text" class="form-control @error('coordinate') is-invalid @enderror" name="coordinate" id="coordinate" value="{{$title->coordinates}}">
+                          @error('coordinate')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                      </div>
+                      <div class="form-group">
+                          <label for="">Longitude</label>
+                          <input type="text" class="form-control" required name="longitude" id="longitude" value="{{$title->longitude}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="">latitude</label>
+                          <input type="text" class="form-control" required name="latitude" id="latitude" value="{{$title->latitude}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="">Nama</label>
+                          <input type="text" class="form-control" required name="nama" id="nama" value="{{$title->nama}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="">Alamat</label>
+                          <input type="text" class="form-control"  name="alamat" id="alamat" value="{{$title->alamat}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="pertamax">Pertamax</label>
+                        <select class="form-control" name="pertamax" id="pertamax">
+                            <option value="Available" class="available {{ $title->pertamax == 'Available' ? 'selected' : '' }}">Available</option>
+                            <option value="Not-Available" class="not-available {{ $title->pertamax == 'Not-Available' ? 'selected' : '' }}">Not Available</option>
+                        </select>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">Titik Koordinat</div>
-                        <div class="card-body">
-                            <form action="{{ route('centre-point.store') }}" method="post">
-                                @csrf
-                                 
-                                <div class="form-group">
-                                    <label for="">Latitude</label>
-                                    <input type="text" class="form-control" name="latitude" id="latitude">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Longitude</label>
-                                    <input type="text" class="form-control" name="longitude" id="longitude">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="nama">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Gambar</label>
-                                    <input type="file" class="form-control" name="gambar" id="gambar">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-sm my-2">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="form-group">
+                        <label for="pertalite">Pertalite</label>
+                        <select class="form-control" name="pertalite" id="pertalite">
+                            <option value="Available" class="available {{ $title->pertalite == 'Available' ? 'selected' : '' }}">Available</option>
+                            <option value="Not-Available" class="not-available {{ $title->pertalite == 'Not-Available' ? 'selected' : '' }}">Not Available</option>
+                        </select>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label for="pertamax_turbo">Pertamax Turbo</label>
+                        <select class="form-control" name="pertamax_turbo" id="pertamax_turbo">
+                            <option value="Available" class="available {{ $title->pertamax_turbo == 'Available' ? 'selected' : '' }}">Available</option>
+                            <option value="Not-Available" class="not-available {{ $title->pertamax_turbo == 'Not-Available' ? 'selected' : '' }}">Not Available</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="solar">Solar</label>
+                        <select class="form-control" name="solar" id="solar">
+                            <option value="Available" class="available {{ $title->solar == 'Available' ? 'selected' : '' }}">Available</option>
+                            <option value="Not-Available" class="not-available {{ $title->solar == 'Not-Available' ? 'selected' : '' }}">Not Available</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm text-blue-400">Current Image:</label>
+                        @if ($title->image)
+                        <img src="{{ asset('images/' . $title->image) }}" alt="Current Book Image"
+                            class="mt-2 max-w-xs">
+                        @else
+                        <p class="text-blue-400">No image available</p>
+                        @endif
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm text-blue-400">New Image:</label>
+                        <input type="file" name="image"
+                        class="w-full px-3 py-2 border rounded-md text-black-400  focus:outline-none  border-black-200" />
+                    </div>
+                    
+  
+                          <div class="form-group">
+                              <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-600">Simpan</button>
+                          </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+</div>
 
       
 
-    <footer>
+    {{-- <footer>
         <div class="bg-teal-300 flex flex-col items-stretch px-20 py-12 max-md:px-5">
             <div class="flex justify-between gap-5 ml-3 mr-4 items-start max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
               <div class="flex basis-[0%] flex-col items-start">
@@ -155,12 +231,14 @@
               </div>
             </div>
           </div>
-    </footer>
+    </footer> --}}
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>
+        var title = {!! json_encode($title) !!};
+        
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
+            maxZoom: 20,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         });
 
@@ -176,15 +254,17 @@
             });
 
         var map = L.map('map', {
-            center: [-5.129541583080711, 113.62957770241515],
-            zoom: 5,
+            center: [title.latitude, title.longitude],
+            zoom: 10,
             layers: [osm]
         })
 
 
-        var marker = L.marker([-5.129541583080711, 113.62957770241515], {
+        var marker = L.marker([title.latitude, title.longitude], {
             draggable: true
         }).addTo(map);
+
+
 
         var baseMaps = {
             'Open Street Map': osm,
@@ -226,7 +306,48 @@
             $('#longitude').val(coordinate.lng).keyup()
         })
         // CARA KEDUA
-    </script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+        const selects = document.querySelectorAll('.form-control');
+
+        selects.forEach(select => {
+            select.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const classesToRemove = ['available', 'not-available'];
+                const colorClass = selectedOption.classList[0];
+
+                this.classList.remove(...classesToRemove);
+                this.classList.add(colorClass);
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = '{{ session('success') }}';
+        var action = '{{ session('action') }}';
+
+        if (successMessage && action) {
+            alert(successMessage);
+
+            // You can customize the alert message based on the action
+            // if (action === 'create') {
+            //     alert('New book created!');
+            // } else if (action === 'edit') {
+            //     alert('Book updated!');
+            // }
+        }
+        });
+            function showAlert(action) {
+                alert(action );
+            }
+
+            function confirmAndAlert(message, action) {
+                var confirmed = confirm(message);
+                if (confirmed) {
+                    showAlert(action);
+                }
+                return confirmed;
+            }
+    </script> 
     
 </body> 
-</html>
