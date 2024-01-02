@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('coordinate');
             $table->text('longitude');
             $table->text('latitude');
->>>>>>> 950001015bc5af1ec870d8c195426de688afbb51
             $table->text('alamat');
             $table->string('image')->nullable();
             $table->string('pertalite');

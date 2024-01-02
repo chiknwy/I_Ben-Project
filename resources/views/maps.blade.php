@@ -5,21 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/css/map.css"> {{-- CSS untuk ukuran map --}}
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/> {{-- Leaflet CSS --}}
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  crossorigin=""/> Leaflet CSS --}}
+  {{-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script> {{-- Leaflet JavaScript --}}
+  crossorigin=""></script> Leaflet JavaScript --}}
 
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
-  <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
+  {{-- <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> Updated path to maps.js --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
-  <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+  {{-- <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
   <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css"> --}}
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Leaflet.Search CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+
+<!-- Leaflet.Search JavaScript -->
+<script src="https://unpkg.com/leaflet-search/dist/leaflet-search.min.js"></script>
 
   <title>Map</title>
 </head>
@@ -161,7 +172,7 @@
 
     @if(session('error'))
     <script>alert('{{ session('error') }}');</script>
-@endif
+    @endif
 @if(session('success'))
     <script>alert('{{ session('success') }}');</script>
 @endif
@@ -169,89 +180,199 @@
     
     <script>
 
-      	const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 5);
+      	// const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 5);
 
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        // const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //   maxZoom: 19,
+        //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        // }).addTo(map);
+
+
+        //  //var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
+        
+        //    var gasIcon = L.icon({
+        //     iconUrl: 'img/icon/icongas.png',
+        //     iconSize:     [34, 38], // size of the icon
+        //     iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+        //     popupAnchor:  [20, 20] // point from which the popup should open relative to the iconAnchor
+        //   });
+
+        // $( document ).ready(function() {
+        //     $.getJSON('/titik/json', function(data) {
+        //       $.each(data, function(index) {
+        //         //alert(data[index].image)
+        //         var image = data[index].image;
+        //         var html = '<div class="bg-indigo-700 border-2 border-teal-600 p-3 max-w-md mx-auto shadow-lg rounded-md">';
+        //             html += '<h5 class="mb-1 text-lg font-semibold text-white">Nama Lokasi: ' + data[index].nama + ' </h5>';
+        //             html += '<h5 class="mb-2 text-sm text-gray-800">Alamat: ' + data[index].alamat + ' </h5>';
+        //             html += '<h5 class="mb-2 text-sm text-blue-200">Pertamax: ' + data[index].pertamax + ' </h5>';
+        //             html += '<h5 class="mb-2 text-sm text-green-200">Pertalite: ' + data[index].pertalite + ' </h5>';
+        //             html += '<h5 class="mb-2 text-sm text-yellow-200">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
+        //             html += '<h5 class="mb-2 text-sm text-red-200">Solar: ' + data[index].solar + ' </h5>';
+        //             html += '<img class="max-w-full mt-2 rounded-md" src="images/' + data[index].image + '">';
+        //             html += '<a href="{{url('transaction')}}"><button onclick="redirectToPayment()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-1 px-2 rounded-full block mt-2">Buy Now</button></a>';
+        //             html += '</div>';
+        //         L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
+        //           icon:gasIcon,
+        //           title:data[index].nama
+        //         })
+        //         .addTo(map)
+        //         .bindPopup(html)
+        //         // .openPopup();
+
+        //       })
+        //     });
+        // });
+
+        // var datas = [
+        //     @foreach ($titik as $key => $value)
+        //         {
+        //             "loc": [{{ $titik->coordinate }}],
+        //             "title": '{!! $value->nama}',
+        //         },
+        //     @endforeach
+        // ]
+
+        // var markerLayer = new L.layerGroup()
+        // map.addLayer(markerLayer)
+        // var controlSearch = new L.Control.Search({
+        //   position:'topleft',
+        //   layer:markerLayer,
+        //   zoom:15,
+        //   markerLocation:true
+        // })
+
+        // map.addControl(controlSearch)
+
+        // for(i in datas){
+        //   var title = datas[i].nama,
+        //   loc = datas[i].coordinate,
+        //   marker = new L.Marker(new L.latLng(loc),{
+        //     title: title
+        //   })
+        //   markerLayer.addLayer(marker)
+        // }
+
+
+
+
+
+        // var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+
+        // var results = new L.LayerGroup().addTo(map);
+              
+        // searchControl.on('results', function (data) {
+        //     results.clearLayers();
+        
+        //     // Assuming you have a route in Laravel that handles geocoding based on 'alamat'
+        //     $.ajax({
+        //         url: '/geocode',
+        //         method: 'POST',
+        //         data: {
+        //             alamat: data.text // Pass the search query to your server
+        //         },
+        //         success: function (response) {
+        //             // Check if the response contains valid coordinates
+        //             if (response && response.lat !== undefined && response.lng !== undefined) {
+        //                 results.addLayer(L.marker([response.lat, response.lng]));
+        //                 map.setView([response.lat, response.lng], 14); // Optionally, center the map on the result
+        //             } else {
+        //                 console.error("Invalid response format:", response);
+        //                 // Handle the case when the response format is unexpected
+        //             }
+        //         },
+        //         error: function (error) {
+        //             console.error("Error fetching geocoding results:", error.responseText);
+        //             // Handle the geocoding error, e.g., display a message to the user
+        //         }
+        //     });
+        // });
+
+
+
+
+        // $( document ).ready(function() {
+        //     $.getJSON('/titik/json', function(data) {
+        //       $.each(data, function(index) {
+        //         // alert(data[index].nama)
+                
+        //         var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
+        //             html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
+        //             html+='<img src="img/icon/spbu1.jpg">'
+        //             html += '<button onclick="redirectToPayment()">Go to Payment</button>'
+        //         L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
+        //           icon:gasIcon,
+        //           title:data[index].nama
+        //         })
+        //         .addTo(map)
+        //         .bindPopup(html)
+        //         .openPopup();
+
+        //       })
+
+        //     });
+        // });
+
+
+        
+        $(document).ready(function () {
+        const map = L.map('map').setView([-8.116167984286907, 115.08773688558952], 5);
+
+        // Add the OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-
-         //var marker = L.marker([-8.116167984286907, 115.08773688558952]).addTo(map)
-        
-         var gasIcon = L.icon({
+        // Icon for markers
+        const gasIcon = L.icon({
             iconUrl: 'img/icon/icongas.png',
-            iconSize:     [34, 38], // size of the icon
-            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-            popupAnchor:  [20, 20] // point from which the popup should open relative to the iconAnchor
-          });
+            iconSize: [34, 38],
+            iconAnchor: [0, 0],
+            popupAnchor: [20, 20]
+        });
 
-        $( document ).ready(function() {
-            $.getJSON('/titik/json', function(data) {
-              $.each(data, function(index) {
-                //alert(data[index].image)
-                var image = data[index].image;
+        // Create a GeoJSON layer and add it to the map
+        const searchLayer = L.geoJSON().addTo(map);
+
+        // Fetch data from the Laravel route
+        $.getJSON('/titik/json', function (data) {
+            $.each(data, function (index) {
+                // HTML for popup
                 var html = '<div class="bg-indigo-700 border-2 border-teal-600 p-3 max-w-md mx-auto shadow-lg rounded-md">';
-                    html += '<h5 class="mb-1 text-lg font-semibold text-white">Nama Lokasi: ' + data[index].nama + ' </h5>';
-                    html += '<h5 class="mb-2 text-sm text-gray-800">Alamat: ' + data[index].alamat + ' </h5>';
-                    html += '<h5 class="mb-2 text-sm text-blue-200">Pertamax: ' + data[index].pertamax + ' </h5>';
-                    html += '<h5 class="mb-2 text-sm text-green-200">Pertalite: ' + data[index].pertalite + ' </h5>';
-                    html += '<h5 class="mb-2 text-sm text-yellow-200">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
-                    html += '<h5 class="mb-2 text-sm text-red-200">Solar: ' + data[index].solar + ' </h5>';
-                    html += '<img class="max-w-full mt-2 rounded-md" src="images/' + data[index].image + '">';
-                    html += '<a href="{{url('transaction')}}"><button onclick="redirectToPayment()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-1 px-2 rounded-full block mt-2">Buy Now</button></a>';
-                    html += '</div>';
+                html += '<h5 class="mb-1 text-lg font-semibold text-white">Nama Lokasi: ' + data[index].nama + ' </h5>';
+                html += '<h5 class="mb-2 text-sm text-gray-800">Alamat: ' + data[index].alamat + ' </h5>';
+                html += '<h5 class="mb-2 text-sm text-blue-200">Pertamax: ' + data[index].pertamax + ' </h5>';
+                html += '<h5 class="mb-2 text-sm text-green-200">Pertalite: ' + data[index].pertalite + ' </h5>';
+                html += '<h5 class="mb-2 text-sm text-yellow-200">Pertamax Turbo: ' + data[index].pertamax_turbo + ' </h5>';
+                html += '<h5 class="mb-2 text-sm text-red-200">Solar: ' + data[index].solar + ' </h5>';
+                html += '<img class="max-w-full mt-2 rounded-md" src="images/' + data[index].image + '">';
+                html += '<a href="{{url('transaction')}}"><button onclick="redirectToPayment()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-1 px-2 rounded-full block mt-2">Buy Now</button></a>';
+                html += '</div>';
 
-
-
-
-
-            
-
+                // Create a marker and add it to the map
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
-                  icon:gasIcon,
-                  title:data[index].nama
+                    icon: gasIcon,
+                    title: data[index].nama
                 })
-                .addTo(map)
-                .bindPopup(html)
-                // .openPopup();
-
-              })
+                    .addTo(map)
+                    .bindPopup(html);
             });
-        });
-        var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
-        var results = new L.LayerGroup().addTo(map);
+            // Add the retrieved GeoJSON data to the searchLayer
+            searchLayer.addData(data);
 
-          searchControl.on('results', function(data){
-            results.clearLayers();
-            for (var i = data.results.length - 1; i >= 0; i--) {
-              results.addLayer(L.marker(data.results[i].latlng));
-            }
-          });
-
-        $( document ).ready(function() {
-            $.getJSON('/titik/json', function(data) {
-              $.each(data, function(index) {
-                // alert(data[index].nama)
-                
-                var html='<h5>Nama Lokasi: '+data[index].nama+' </h5>'
-                    html+= '<h5>Alamat: '+data[index].alamat+' </h5>'
-                    html+='<img src="img/icon/spbu1.jpg">'
-                    html += '<button onclick="redirectToPayment()">Go to Payment</button>'
-                L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
-                  icon:gasIcon,
-                  title:data[index].nama
-                })
-                .addTo(map)
-                .bindPopup(html)
-                .openPopup();
-
-              })
+            // Create a search control and add it to the map
+            const searchControl = new L.Control.Search({
+                layer: searchLayer,
+                propertyName: 'alamat' // Replace with the actual property name in your GeoJSON data
             });
-        });
-        
 
+            searchControl.addTo(map);
+
+            // Optionally, fit the map bounds to the added GeoJSON layer
+            map.fitBounds(searchLayer.getBounds());
+        });
+    });
 
 
         

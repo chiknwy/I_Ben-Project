@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Titik;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Geocoder\ProviderAggregator;
+use Geocoder\Provider\OpenCage\OpenCage;
+use Geocoder\Query\GeocodeQuery;
 
 class HomeController extends Controller
 {
@@ -31,7 +34,13 @@ class HomeController extends Controller
     }
 
     public function user_map(){
-        return view('maps');
+        $titik = Titik::get()->first();
+        // $spot = Spot::get();
+
+        return view('maps',[
+            'titik' => $titik,
+            // 'spot' => $spot
+        ]);
     }
     
 
@@ -176,16 +185,38 @@ class HomeController extends Controller
         return view('leaflet.get_coordinate');
     }
 
-    // public function spots()
-    // {
-    //     $centerPoint = CentrePoint::get()->first();
-    //     $spot = Spot::get();
 
-    //     return view('frontend.home',[
-    //         'centerPoint' => $centerPoint,
-    //         'spot' => $spot
-    //     ]);
-    // }
+
+    public function geocode(Request $request)
+    {
+        // mengambil alamat dari inputtan
+        $alamat = $request->input('alamat');
+
+        $titik = Titik::where('alamat', $alamat)->first();
+
+        if($titik){
+            $coordinates = [
+                'lat' => $titik->latitude,
+                'long' => $titik->longitude,
+            ];
+
+            return response()->json($coordinates);
+        } else{
+            return response()->json(['error' => 'Address not found'], 404);
+        }
+    }
+
+
+    public function alamat()
+    {
+        $titik = Titik::get()->first();
+        // $spot = Spot::get();
+
+        return view('maps',[
+            'titik' => $titik,
+            // 'spot' => $spot
+        ]);
+    }
 
     // public function detailSpot($slug)
     // {
