@@ -12,6 +12,9 @@
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script> {{-- Leaflet JavaScript --}}
 
+  <link rel="stylesheet" href="leaflet-search-master\dist\leaflet-search.src.css">
+  <script src="leaflet-search-master\dist\leaflet-search.src.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <link rel="icon" href={{URL('img/maps/iben-4-removebg-preview-5.png')}}>
   <script type="text/javascript" src="{{ asset('resources\js\maps.js') }}"></script> {{-- Updated path to maps.js --}}
@@ -210,12 +213,6 @@
                     html += '<a href="{{url('transaction')}}"><button onclick="redirectToPayment()" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-1 px-2 rounded-full block mt-2">Buy Now</button></a>';
                     html += '</div>';
 
-
-
-
-
-            
-
                 L.marker([parseFloat(data[index].latitude), parseFloat(data[index].longitude)], {
                   icon:gasIcon,
                   title:data[index].nama
@@ -223,10 +220,12 @@
                 .addTo(map)
                 .bindPopup(html)
                 // .openPopup();
-
               })
+
+
             });
         });
+        
         var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         var results = new L.LayerGroup().addTo(map);

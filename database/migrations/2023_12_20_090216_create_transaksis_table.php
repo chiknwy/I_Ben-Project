@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nohp');
             $table->string('email');
-            $table->enum('bensin', ['PERTALITE','PERTAMAX','SOLAR']);
+            $table->enum('bensin', ['PERTALITE','PERTAMAX','SOLAR','PERTAMAX_TURBO']);
             $table->string('nominal');
             $table->string('status')-> default('pending');
             $table->string('invoice');

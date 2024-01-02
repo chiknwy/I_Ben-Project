@@ -62,12 +62,13 @@
             <label for="nohp">No Hp :</label>
             <input type="text" required name="nohp" class="form-control" id="nohp" value="{{ Auth::user()->phone }}" >
           </div>
+          <label for="PilihBensin">Pilih Jenis Bensin</label>
 
-          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="bensin">
-            <option selected>Open this select menu</option>
+          <select class="form-control" aria-label=".form-select-lg example" name="bensin">
             <option value="PERTALITE">PERTALITE</option>
             <option value="PERTAMAX">PERTAMAX</option>
             <option value="SOLAR">SOLAR</option>
+            <option value="PERTAMAX_TURBO">Pertamax Turbo</option>
           </select>
           
           <div class="form-group">
@@ -145,7 +146,11 @@
         if (nominalValue < 10000 || isNaN(nominalValue)) {
           errorDiv.textContent = 'Minimum nominal is Rp 10.000';
           nominalInput.setCustomValidity('Invalid');
-        } else {
+        }else if (nominalValue > 10000000) {
+          errorDiv.textContent = 'Maximum nominal is Rp 10.000.000';
+          nominalInput.setCustomValidity('Invalid');
+        } 
+        else {
           errorDiv.textContent = '';
           nominalInput.setCustomValidity('');
         }

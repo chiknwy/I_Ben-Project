@@ -27,14 +27,16 @@
                 @else
                   <a href="{{ route('login') }}"><div class="text-white text-lg font-medium whitespace-nowrap">LOGIN</div></a>
                       <a href="{{ route('register') }}"><button  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg">SIGN UP</button></a>
-                    </div>
+                    
                 @endif
                 @if (Auth::check() && Auth::user()->usertype == 1)
-                <div class="justify-end w-11 h-11 flex ">
-                  <a  class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-24 h-8 rounded-lg" href="{{url ('/adminpage')}}">
-                    <button >Adminpage</button>
+                 
+                  <a href="{{url ('/adminpage')}}">
+                    <button class="text-white text-lg font-medium whitespace-nowrap bg-teal-500 w-auto h-auto rounded-lg px-2"> Admin Page </button>
                   </a>
-                </div>
+
+              </div>
+                
               @endif
             </div>
              
