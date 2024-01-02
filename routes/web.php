@@ -30,11 +30,12 @@ Route::get('/', function () {
 
 
 
-
+Route::get('/maps', [HomeController::class, 'alamat']);
 Route::get('/maps', [HomeController::class, 'simple_map'])->name('maps');
 Route::get('/maptes', [TitikController::class, 'index']);
 Route::get('/titik/json', [TitikController::class, 'json']);
-
+Route::get('/geocode', [HomeController::class, 'geocode']);
+Route::get('/maps', [HomeController::class, 'search']);
 Route::get('/titik/lokasi/{id}', [TitikController::class, 'lokasi']);
 Route::get('/adminpage', [HomeController::class, 'adminpage']);
 

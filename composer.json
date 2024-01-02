@@ -13,6 +13,7 @@
         "laravel/ui": "^4.2",
         "livewire/volt": "^1.6",
         "muhammadnan/tripay-payment-gateway": "^2.0",
+        "willdurand/geocoder": "^4.6",
         "yajra/laravel-datatables-oracle": "^10.3.1"
     },
     "require-dev": {
